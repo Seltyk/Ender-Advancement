@@ -1,0 +1,18 @@
+[
+{
+  "modid": "enderadvancement",
+  "name": "Ender Advancement",
+  "description": "The power of the Enderman has increased ten fold! Just what will you do with it?",
+  "version": "2.0.4",
+  "mcversion": "1.10.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["wundrweapon"],
+  "credits": "happygill16 for making the foundation of the mod, and the #MinecraftForge folks for being so helpful",
+  "logoFile": "",
+  "screenshots": [],
+  "useDependencyInformation": true,
+  "dependencies": ["wundrweaponutilities"],
+  "requiredMods": ["wundrweaponutilities"]
+}
+]

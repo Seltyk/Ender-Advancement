@@ -1,0 +1,13 @@
+enchantment.duper=Duper
+item.enderadvancement_enderEssence.name=Ender Essence
+item.enderadvancement_impureEnderCore.name=Impure Ender Core
+item.enderadvancement_heatedEnderCore.name=Heated Ender Core
+item.enderadvancement_pureEnderCore.name=Pure Ender Core
+item.enderadvancement_enderInfusedTwig.name=Ender Infused Twig
+item.enderadvancement_enderPickaxe.name=Ender Pickaxe
+item.enderadvancement_enderAxe.name=Ender Axe
+item.enderadvancement_enderShovel.name=Ender Shovel
+item.enderadvancement_enderSword.name=Ender Sword
+item.enderadvancement_bebpd.name=Biopneumatic End-Based Phasing Device
+itemGroup.endAdvance=Ender Advancement
+itemGroup.endAdvanceTools=Ender Advancement Tools

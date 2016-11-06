@@ -1,0 +1,6 @@
+{
+    "parent": "enderadvancement:item/handheld",
+    "textures": {
+        "layer0": "enderadvancement:items/impure_core"
+    }
+}
