@@ -10,7 +10,7 @@ import wundr.enderAdvancement.Main;
 
 /**
  * Copyright (c) 2016 wundrweapon<br>
- * Credits happygill16 for making the foundations for this file
+ * Credits to happygill16 for making the foundations for this file
  * 
  * @author wundrweapon
  */
@@ -26,13 +26,13 @@ public class LivingDeathEventHandler {
 	@SubscribeEvent
 	public static void onLivingDeath(LivingDeathEvent event) {
 		if(event.getEntity() instanceof EntityEnderman) {
-			Random rand = new Random();
+			Random rand = new Random(event.getEntity().worldObj.getSeed());
 			
 			if(rand.nextInt(oneChance) == oneChance - 1) {
 				if(rand.nextInt(twoChance) == twoChance - 1) {
-					event.getEntity().dropItem(Main.enderEssence, 2);
+					event.getEntity().dropItem(Main.ENDER_ESSENCE, 2);
 				} else {
-					event.getEntity().dropItem(Main.enderEssence, 1);
+					event.getEntity().dropItem(Main.ENDER_ESSENCE, 1);
 				}
 			}
 		}

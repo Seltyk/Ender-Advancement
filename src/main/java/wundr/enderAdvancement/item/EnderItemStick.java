@@ -6,13 +6,16 @@ import wundr.enderAdvancement.Main;
 
 /**
  * Copyright (c) 2016 wundrweapon<br>
- * Credits happygill16 for making the foundations for this file
+ * Credits to happygill16 for making the foundations for this file
  * 
  * @author wundrweapon
  */
 public class EnderItemStick extends Item {
+	private static String name = "twig";
+	public static final ResourceLocation REGISTRY_RL = new ResourceLocation(Main.MOD_ID + ":" + name);
+	
 	public EnderItemStick() {
-		setRegistryName(new ResourceLocation(Main.MOD_ID + ":twig"));
-		setUnlocalizedName(Main.MOD_ID + "_enderInfusedTwig");
+		setRegistryName(REGISTRY_RL);
+		setUnlocalizedName(Main.MOD_ID + "_" + name);
 	}
 }

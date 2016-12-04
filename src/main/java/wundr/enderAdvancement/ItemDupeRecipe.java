@@ -2,7 +2,6 @@ package wundr.enderAdvancement;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -12,7 +11,7 @@ import wundr.enderAdvancement.item.tool.EnderItemTeleportWand;
 
 /**
  * Copyright (c) 2016 wundrweapon<br>
- * Credits happygill16 for making the foundations for this file
+ * Credits to happygill16 for making the foundations for this file
  * 
  * @author wundrweapon
  */
@@ -62,7 +61,7 @@ public class ItemDupeRecipe implements IRecipe {
 	public int getRecipeSize() {
 		return 2;
 	}
-  
+	
 	@Override
 	@Nullable
 	public ItemStack getRecipeOutput() {
@@ -88,13 +87,13 @@ public class ItemDupeRecipe implements IRecipe {
 		
 		grid.clear();
 		
-		if(otherStack.stackSize < 50) {
-			pureCore.attemptDamageItem(otherStack.stackSize, Minecraft.getMinecraft().theWorld.rand);
+		if(otherStack.stackSize < pureCore.getItemDamage()) {
+			pureCore.attemptDamageItem(otherStack.stackSize, null);
 			return new ItemStack[] {pureCore};
-		} else if(otherStack.stackSize == 50) {
+		} else if(otherStack.stackSize == pureCore.getItemDamage()) {
 			return new ItemStack[] {};
 		} else {
-			otherStack.stackSize -= 50;
+			otherStack.stackSize -= pureCore.getItemDamage();
 			return new ItemStack[] {otherStack};
 		}
 	}

@@ -6,14 +6,17 @@ import wundr.enderAdvancement.Main;
 
 /**
  * Copyright (c) 2016 wundrweapon<br>
- * Credits happygill16 for making the foundations for this file
+ * Credits to happygill16 for making the foundations for this file
  * 
  * @author wundrweapon
  */
 public class EnderAxe extends ItemAxe {
+	private static String name = "axe";
+	public static final ResourceLocation REGISTRY_RL = new ResourceLocation(Main.MOD_ID + ":" + name);
+	
 	public EnderAxe(ToolMaterial material) {
 		super(material, 12, -2.8f);
-		setRegistryName(new ResourceLocation(Main.MOD_ID + ":axe"));
-		setUnlocalizedName(Main.MOD_ID + "_enderAxe");
+		setRegistryName(REGISTRY_RL);
+		setUnlocalizedName(Main.MOD_ID + "_" + name);
 	}
 }

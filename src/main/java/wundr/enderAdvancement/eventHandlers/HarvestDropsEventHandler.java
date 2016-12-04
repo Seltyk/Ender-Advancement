@@ -12,7 +12,7 @@ import wundr.modutils.Booleans;
 
 /**
  * Copyright (c) 2016 wundrweapon<br>
- * Credits happygill16 for making the original version of this file
+ * Credits to happygill16 for making the original version of this file
  * 
  * @author wundrweapon
  */
@@ -22,7 +22,7 @@ public class HarvestDropsEventHandler {
 	@SubscribeEvent
 	public static void onHarvestDrops(HarvestDropsEvent event) {
 		try {
-			if((Booleans.isEnchanted(Main.duper, event.getHarvester().getHeldItemMainhand()) || event.getHarvester().getHeldItemMainhand().getItem() instanceof EnderPickaxe) && event.getState().getBlock().getLocalizedName().contains(" Ore")) {
+			if((Booleans.isEnchanted(Main.DUPER, event.getHarvester().getHeldItemMainhand()) || event.getHarvester().getHeldItemMainhand().getItem() instanceof EnderPickaxe) && event.getState().getBlock().getLocalizedName().contains(" Ore")) {
 				List<ItemStack> drops = event.getDrops();
 				event.setDropChance(1);
 				event.getDrops().addAll(drops);

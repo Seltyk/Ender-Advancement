@@ -6,13 +6,16 @@ import wundr.enderAdvancement.Main;
 
 /**
  * Copyright (c) 2016 wundrweapon<br>
- * Credits happygill16 for making the foundations for this file
+ * Credits to happygill16 for making the foundations for this file
  * 
  * @author wundrweapon
  */
 public class EnderItemEssence extends Item {
+	private static String name = "essence";
+	public static final ResourceLocation REGISTRY_RL = new ResourceLocation(Main.MOD_ID + ":" + name);
+	
 	public EnderItemEssence() {
-		setRegistryName(new ResourceLocation(Main.MOD_ID + ":essence"));
-		setUnlocalizedName(Main.MOD_ID + "_enderEssence");
+		setRegistryName(REGISTRY_RL);
+		setUnlocalizedName(Main.MOD_ID + "_" + name);
 	}
 }

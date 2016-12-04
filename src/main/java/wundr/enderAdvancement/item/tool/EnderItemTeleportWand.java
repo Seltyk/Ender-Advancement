@@ -13,38 +13,40 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.RayTraceResult.Type;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import wundr.enderAdvancement.Main;
 
 /**
  * Copyright (c) 2016 wundrweapon<br>
- * Credits happygill16 for making the foundations for this file<br>
+ * Credits to happygill16 for making the foundations for this file<br>
  * Credits to Mojang, as the spawnParticle and playSound parameters used are from their code
  * 
  * @author wundrweapon
+ * @see net.minecraft.entity.monster.EntityEnderman
  */
 public class EnderItemTeleportWand extends Item {
 	private boolean clearFallDamage, teleportAir, teleportStuck;
 	private double distance;
+	private static String name = "bebrd";
+	public static final ResourceLocation REGISTRY_RL = new ResourceLocation(Main.MOD_ID + ":" + name);
 	
 	public EnderItemTeleportWand() {
-		setRegistryName(new ResourceLocation(Main.MOD_ID + ":bebpd"));
-		setUnlocalizedName(Main.MOD_ID + "_bebpd");
+		setRegistryName(REGISTRY_RL);
+		setUnlocalizedName(Main.MOD_ID + "_" + name);
 	}
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
-		clearFallDamage = Main.fallDamage;
-		teleportAir = Main.teleportAir;
-		teleportStuck = Main.teleportStuck;
+		clearFallDamage = Main.isAbleToTakeFallDamageFromTeleport;
+		teleportAir = Main.isAbleToTeleportToAir;
+		teleportStuck = Main.isAbleToTeleportDangerously;
 		distance = Main.teleportDistance;
 		
 		RayTraceResult tracedBlock = player.rayTrace(distance, 1);
 		
-		if(tracedBlock != null && tracedBlock.typeOfHit != Type.ENTITY) {
-			BlockPos blockAbove = new BlockPos(new Vec3d(tracedBlock.getBlockPos().getX(), tracedBlock.getBlockPos().getY() + 1, tracedBlock.getBlockPos().getZ()));
-			BlockPos blockTwoAbove = new BlockPos(new Vec3d(tracedBlock.getBlockPos().getX(), tracedBlock.getBlockPos().getY() + 2, tracedBlock.getBlockPos().getZ()));
+		if(tracedBlock.typeOfHit != Type.ENTITY) {
+			BlockPos blockAbove = new BlockPos(tracedBlock.getBlockPos().getX(), tracedBlock.getBlockPos().getY() + 1, tracedBlock.getBlockPos().getZ());
+			BlockPos blockTwoAbove = new BlockPos(tracedBlock.getBlockPos().getX(), tracedBlock.getBlockPos().getY() + 2, tracedBlock.getBlockPos().getZ());
 			
 			double endPosX = tracedBlock.getBlockPos().getX() + .5;
 			double endPosY = tracedBlock.getBlockPos().getY() + 1;
@@ -142,7 +144,7 @@ public class EnderItemTeleportWand extends Item {
 				return ActionResult.newResult(EnumActionResult.FAIL, stack);
 			}
 		} else {
-			return ActionResult.newResult(EnumActionResult.FAIL, stack);
+			return ActionResult.newResult(EnumActionResult.PASS, stack);
 		}
 	}
 }

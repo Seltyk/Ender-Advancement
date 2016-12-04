@@ -6,14 +6,17 @@ import wundr.enderAdvancement.Main;
 
 /**
  * Copyright (c) 2016 wundrweapon<br>
- * Credits happygill16 for making the foundations for this file
+ * Credits to happygill16 for making the foundations for this file
  * 
  * @author wundrweapon
  */
 public class EnderSword extends ItemSword {
+	private static String name = "sword";
+	public static final ResourceLocation REGISTRY_RL = new ResourceLocation(Main.MOD_ID + ":" + name);
+	
 	public EnderSword(ToolMaterial material)  {
 		super(material);
-		setRegistryName(new ResourceLocation(Main.MOD_ID + ":sword"));
-		setUnlocalizedName(Main.MOD_ID + "_enderSword");
+		setRegistryName(REGISTRY_RL);
+		setUnlocalizedName(Main.MOD_ID + "_" + name);
 	}
 }

@@ -16,7 +16,7 @@ import wundr.enderAdvancement.item.EnderItemEssence;
  */
 @EventBusSubscriber
 public class LivingUpdateEventHandler {
-	private static EntityPlayer player = null;
+	private static EntityPlayer player;
 	
 	@SubscribeEvent
 	public static void onLivingUpdate(LivingUpdateEvent event) {
