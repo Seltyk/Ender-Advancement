@@ -3,8 +3,8 @@ package wundr.enderAdvancement.enchantments;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.inventory.EntityEquipmentSlot;
+
 import wundr.enderAdvancement.Main;
-import wundr.modutils.Getters;
 
 /**
  * Copyright (c) 2016 wundrweapon<br>
@@ -24,11 +24,11 @@ public class DuperEnchantment extends Enchantment {
 	
 	@Override
 	public int getMinEnchantability(int enchLvl) {
-		return Getters.getMinEnchantability(enchLvl);
+		return 20;
 	}
 	
 	@Override
 	public int getMaxEnchantability(int enchLvl) {
-		return Getters.getMaxEnchantability(enchLvl);
+		return Integer.MAX_VALUE;
 	}
 }

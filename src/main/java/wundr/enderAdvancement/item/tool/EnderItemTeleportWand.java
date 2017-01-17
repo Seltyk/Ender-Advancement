@@ -37,9 +37,9 @@ public class EnderItemTeleportWand extends Item {
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
-		clearFallDamage = Main.isAbleToTakeFallDamageFromTeleport;
-		teleportAir = Main.isAbleToTeleportToAir;
-		teleportStuck = Main.isAbleToTeleportDangerously;
+		clearFallDamage = Main.canTakeFallDamageFromTeleport;
+		teleportAir = Main.canTeleportToAir;
+		teleportStuck = Main.canTeleportDangerously;
 		distance = Main.teleportDistance;
 		
 		RayTraceResult tracedBlock = player.rayTrace(distance, 1);
@@ -63,7 +63,7 @@ public class EnderItemTeleportWand extends Item {
 				
 				if(world.isRemote) {
 					for(int i = 0; i < 10; i++) {
-						world.spawnParticle(EnumParticleTypes.PORTAL, player.posX + (world.rand.nextDouble() - .5) * (double) player.width, player.posY + world.rand.nextDouble() * (double) player.height - .25, player.posZ + (world.rand.nextDouble() - .5) * (double) player.width, (world.rand.nextDouble() - .5) * 2, -world.rand.nextDouble(), (world.rand.nextDouble() - .5) * 2, new int[0]);
+						world.spawnParticle(EnumParticleTypes.PORTAL, player.posX + (world.rand.nextDouble() - .5) * player.width, player.posY + world.rand.nextDouble() * player.height - .25, player.posZ + (world.rand.nextDouble() - .5) * player.width, (world.rand.nextDouble() - .5) * 2, -world.rand.nextDouble(), (world.rand.nextDouble() - .5) * 2);
 					}
 				}
 				
@@ -81,7 +81,7 @@ public class EnderItemTeleportWand extends Item {
 					
 					if(world.isRemote) {
 						for(int i = 0; i < 10; i++) {
-							world.spawnParticle(EnumParticleTypes.PORTAL, player.posX + (world.rand.nextDouble() - .5) * (double) player.width, player.posY + world.rand.nextDouble() * (double) player.height - .25, player.posZ + (world.rand.nextDouble() - .5) * (double) player.width, (world.rand.nextDouble() - .5) * 2, -world.rand.nextDouble(), (world.rand.nextDouble() - .5) * 2, new int[0]);
+							world.spawnParticle(EnumParticleTypes.PORTAL, player.posX + (world.rand.nextDouble() - .5) * player.width, player.posY + world.rand.nextDouble() * player.height - .25, player.posZ + (world.rand.nextDouble() - .5) * player.width, (world.rand.nextDouble() - .5) * 2, -world.rand.nextDouble(), (world.rand.nextDouble() - .5) * 2);
 						}
 					}
 					
@@ -102,7 +102,7 @@ public class EnderItemTeleportWand extends Item {
 					
 					if(world.isRemote) {
 						for(int i = 0; i < 10; i++) {
-							world.spawnParticle(EnumParticleTypes.PORTAL, player.posX + (world.rand.nextDouble() - .5) * (double) player.width, player.posY + world.rand.nextDouble() * (double) player.height - .25, player.posZ + (world.rand.nextDouble() - .5) * (double) player.width, (world.rand.nextDouble() - .5) * 2, -world.rand.nextDouble(), (world.rand.nextDouble() - .5) * 2, new int[0]);
+							world.spawnParticle(EnumParticleTypes.PORTAL, player.posX + (world.rand.nextDouble() - .5) * player.width, player.posY + world.rand.nextDouble() * player.height - .25, player.posZ + (world.rand.nextDouble() - .5) * player.width, (world.rand.nextDouble() - .5) * 2, -world.rand.nextDouble(), (world.rand.nextDouble() - .5) * 2);
 						}
 					}
 					
@@ -124,7 +124,7 @@ public class EnderItemTeleportWand extends Item {
 						
 						if(world.isRemote) {
 							for(int i = 0; i < 10; i++) {
-								world.spawnParticle(EnumParticleTypes.PORTAL, player.posX + (world.rand.nextDouble() - .5) * (double) player.width, player.posY + world.rand.nextDouble() * (double) player.height - .25, player.posZ + (world.rand.nextDouble() - .5) * (double) player.width, (world.rand.nextDouble() - .5) * 2, -world.rand.nextDouble(), (world.rand.nextDouble() - .5) * 2, new int[0]);
+								world.spawnParticle(EnumParticleTypes.PORTAL, player.posX + (world.rand.nextDouble() - .5) * player.width, player.posY + world.rand.nextDouble() * player.height - .25, player.posZ + (world.rand.nextDouble() - .5) * player.width, (world.rand.nextDouble() - .5) * 2, -world.rand.nextDouble(), (world.rand.nextDouble() - .5) * 2);
 							}
 						}
 						

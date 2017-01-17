@@ -40,15 +40,15 @@ import wundr.enderAdvancement.item.tool.*;
 public class Main {
 	public static final String MOD_ID = "enderadvancement";
 	
-	public static boolean isAbleToTeleportDangerously;
-	public static boolean isAbleToTeleportToAir;
-	public static boolean isAbleToTakeFallDamageFromTeleport;
+	@SidedProxy(clientSide = "wundr.enderAdvancement.ClientProxy")
+	private static IProxy proxy;
+	
+	public static boolean canTeleportDangerously;
+	public static boolean canTeleportToAir;
+	public static boolean canTakeFallDamageFromTeleport;
 	public static int singleChance;
 	public static int doubleChance;
 	public static double teleportDistance;
-	
-	@SidedProxy(clientSide = "wundr.enderAdvancement.ClientProxy", modId = MOD_ID)
-	private static IProxy proxy;
 	
 	public static final ToolMaterial ENDERIUM = EnumHelper.addToolMaterial("enderium", 5, -1, 12, 4, 22);
 	public static final Item BEBRD = new EnderItemTeleportWand();
@@ -84,9 +84,9 @@ public class Main {
 		config.setCategoryComment("Biopneumatic End-Based Phasing Device", "Player-selected buffs/nerfs for the BEBPD");
 		config.setCategoryComment("Ender Essence", "Ender Essence drop rate");
 		
-		isAbleToTeleportDangerously = config.getBoolean("Teleport into blocks", "Biopneumatic End-Based Relocation Device", false, "If true, teleporting to a block which will get you stuck will not be prevented");
-		isAbleToTeleportToAir = config.getBoolean("Teleport to air", "Biopneumatic End-Based Relocation Device", false, "If true, trying to teleport to nothing will teleport atop the air block [max distance] blocks ahead of crosshairs");
-		isAbleToTakeFallDamageFromTeleport = config.getBoolean("Disable fall damage", "Biopneumatic End-Based Relocation Device", false, "If true, teleporting will negate fall damage");
+		canTeleportDangerously = config.getBoolean("Teleport into blocks", "Biopneumatic End-Based Relocation Device", false, "If true, teleporting to a block which will get you stuck will not be prevented");
+		canTeleportToAir = config.getBoolean("Teleport to air", "Biopneumatic End-Based Relocation Device", false, "If true, trying to teleport to nothing will teleport atop the air block [max distance] blocks ahead of crosshairs");
+		canTakeFallDamageFromTeleport = config.getBoolean("Disable fall damage", "Biopneumatic End-Based Relocation Device", false, "If true, teleporting will negate fall damage");
 		teleportDistance = config.getFloat("Teleport distance", "Biopneumatic End-Based Relocation Device", 50, 0, Float.MAX_VALUE, "Farthest the BEDRD will allow for teleportation. Be rational, especially with render distance, to prevent breaking things");
 		singleChance = config.getInt("Chance for single drop", "Ender Essence", 32, 1, Integer.MAX_VALUE, "The chance that an Enderman will drop Ender Essence when it drops something else. Chance is 1 divided by input value. Using the max number may break things, so be rational.");
 		doubleChance = config.getInt("Chance for a double drop", "Ender Essence", 2, 1, Integer.MAX_VALUE, "The chance of getting 2 Ender Essence instead of 1. Calculated as (chance of one) * (1 divided by input). Using a number too high will break things, so be rational.");

@@ -12,7 +12,7 @@ import wundr.enderAdvancement.item.EnderItemEssence;
  * Credits to Mojang, as the spawnParticle parameters used are from their code
  * 
  * @author wundrweapon
- * @see net.minecraft.entity.monster.EntityEnderman
+ * @see net.minecraft.entity.monster.EntityEnderman:
  */
 @EventBusSubscriber
 public class LivingUpdateEventHandler {
@@ -25,8 +25,8 @@ public class LivingUpdateEventHandler {
 			
 			try {
 				if((player.getHeldItemMainhand().getItem() instanceof EnderItemEssence || player.getHeldItemOffhand().getItem() instanceof EnderItemEssence) && player.worldObj.isRemote) {
-					player.worldObj.spawnParticle(EnumParticleTypes.PORTAL, player.posX + (player.worldObj.rand.nextDouble() - .5) * (double) player.width, player.posY + player.worldObj.rand.nextDouble() * (double) player.height - .25, player.posZ + (player.worldObj.rand.nextDouble() - .5) * (double) player.width, (player.worldObj.rand.nextDouble() - .5) * 2, -player.worldObj.rand.nextDouble(), (player.worldObj.rand.nextDouble() - .5) * 2, new int[0]);
-					player.worldObj.spawnParticle(EnumParticleTypes.PORTAL, player.posX + (player.worldObj.rand.nextDouble() - .5) * (double) player.width, player.posY + player.worldObj.rand.nextDouble() * (double) player.height - .25, player.posZ + (player.worldObj.rand.nextDouble() - .5) * (double) player.width, (player.worldObj.rand.nextDouble() - .5) * 2, -player.worldObj.rand.nextDouble(), (player.worldObj.rand.nextDouble() - .5) * 2, new int[0]);
+					player.worldObj.spawnParticle(EnumParticleTypes.PORTAL, player.posX + (player.worldObj.rand.nextDouble() - .5) * player.width, player.posY + player.worldObj.rand.nextDouble() * player.height - .25, player.posZ + (player.worldObj.rand.nextDouble() - .5) * player.width, (player.worldObj.rand.nextDouble() - .5) * 2, -player.worldObj.rand.nextDouble(), (player.worldObj.rand.nextDouble() - .5) * 2);
+					player.worldObj.spawnParticle(EnumParticleTypes.PORTAL, player.posX + (player.worldObj.rand.nextDouble() - .5) * player.width, player.posY + player.worldObj.rand.nextDouble() * player.height - .25, player.posZ + (player.worldObj.rand.nextDouble() - .5) * player.width, (player.worldObj.rand.nextDouble() - .5) * 2, -player.worldObj.rand.nextDouble(), (player.worldObj.rand.nextDouble() - .5) * 2);
 				}
 			} catch(NullPointerException e) {
 				return;

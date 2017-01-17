@@ -2,10 +2,13 @@ package wundr.enderAdvancement.eventHandlers;
 
 import java.util.List;
 
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemBlockSpecial;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
 import wundr.enderAdvancement.Main;
 import wundr.enderAdvancement.item.tool.EnderPickaxe;
 import wundr.modutils.Booleans;
@@ -21,14 +24,14 @@ public class HarvestDropsEventHandler {
 
 	@SubscribeEvent
 	public static void onHarvestDrops(HarvestDropsEvent event) {
-		try {
-			if((Booleans.isEnchanted(Main.DUPER, event.getHarvester().getHeldItemMainhand()) || event.getHarvester().getHeldItemMainhand().getItem() instanceof EnderPickaxe) && event.getState().getBlock().getLocalizedName().contains(" Ore")) {
-				List<ItemStack> drops = event.getDrops();
-				event.setDropChance(1);
-				event.getDrops().addAll(drops);
+		if(event.getHarvester() != null && event.getHarvester().getActiveItemStack() != null && (Booleans.isEnchanted(Main.DUPER, event.getHarvester().getActiveItemStack()) || event.getHarvester().getActiveItemStack().getItem() instanceof EnderPickaxe)) {
+			List<ItemStack> dropsCopy = event.getDrops();
+			
+			for(ItemStack drop : dropsCopy) {
+				if(!(drop.getItem() instanceof ItemBlock || drop.getItem() instanceof ItemBlockSpecial)) {
+					event.getDrops().add(drop.copy());
+				}
 			}
-		} catch(NullPointerException e) {
-			return;
 		}
 	}
 }
