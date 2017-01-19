@@ -1,8 +1,8 @@
 enchantment.duper=Duper
 item.enderadvancement_essence.name=Ender Essence
-item.enderadvancement_impure_Core.name=Impure Ender Core
-item.enderadvancement_heated_Core.name=Heated Ender Core
-item.enderadvancement_pure_Core.name=Pure Ender Core
+item.enderadvancement_impure_core.name=Impure Ender Core
+item.enderadvancement_heated_core.name=Heated Ender Core
+item.enderadvancement_pure_core.name=Pure Ender Core
 item.enderadvancement_twig.name=Ender Infused Twig
 item.enderadvancement_pick.name=Ender Pickaxe
 item.enderadvancement_axe.name=Ender Axe
