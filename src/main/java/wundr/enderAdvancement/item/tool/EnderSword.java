@@ -2,21 +2,20 @@ package wundr.enderAdvancement.item.tool;
 
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.ResourceLocation;
-import wundr.enderAdvancement.Main;
+import wundr.enderAdvancement.EnderAdvancement;
 
 /**
- * Copyright (c) 2016 wundrweapon<br>
+ * Copyright (c) 2016-2017 wundrweapon<br>
  * Credits to happygill16 for making the foundations for this file
- * 
  * @author wundrweapon
  */
 public class EnderSword extends ItemSword {
 	private static String name = "sword";
-	public static final ResourceLocation REGISTRY_RL = new ResourceLocation(Main.MOD_ID + ":" + name);
+	public static final ResourceLocation REGISTRY_RL = new ResourceLocation(EnderAdvancement.MOD_ID + ":" + name);
 	
 	public EnderSword(ToolMaterial material)  {
 		super(material);
 		setRegistryName(REGISTRY_RL);
-		setUnlocalizedName(Main.MOD_ID + "_" + name);
+		setUnlocalizedName(EnderAdvancement.MOD_ID + "_" + name);
 	}
 }

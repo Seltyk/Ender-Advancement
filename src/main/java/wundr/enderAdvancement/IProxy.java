@@ -1,7 +1,7 @@
 package wundr.enderAdvancement;
 
 /**
- * Copyright (c) 2016 wundrweapon
+ * Copyright (c) 2016-2017 wundrweapon
  * @author wundrweapon
  */
 public interface IProxy {

@@ -9,14 +9,13 @@ import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import wundr.enderAdvancement.Main;
+import wundr.enderAdvancement.EnderAdvancement;
 import wundr.enderAdvancement.item.tool.EnderPickaxe;
 import wundr.modutils.Booleans;
 
 /**
- * Copyright (c) 2016 wundrweapon<br>
+ * Copyright (c) 2016-2017 wundrweapon<br>
  * Credits to happygill16 for making the original version of this file
- * 
  * @author wundrweapon
  */
 @EventBusSubscriber
@@ -24,7 +23,7 @@ public class HarvestDropsEventHandler {
 
 	@SubscribeEvent
 	public static void onHarvestDrops(HarvestDropsEvent event) {
-		if(event.getHarvester() != null && event.getHarvester().getActiveItemStack() != null && (Booleans.isEnchanted(Main.DUPER, event.getHarvester().getActiveItemStack()) || event.getHarvester().getActiveItemStack().getItem() instanceof EnderPickaxe)) {
+		if(event.getHarvester() != null && event.getHarvester().getActiveItemStack() != null && (Booleans.isEnchanted(EnderAdvancement.DUPER, event.getHarvester().getActiveItemStack()) || event.getHarvester().getActiveItemStack().getItem() instanceof EnderPickaxe)) {
 			List<ItemStack> dropsCopy = event.getDrops();
 			
 			for(ItemStack drop : dropsCopy) {

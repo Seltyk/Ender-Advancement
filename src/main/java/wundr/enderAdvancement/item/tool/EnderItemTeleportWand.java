@@ -14,33 +14,30 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraft.world.World;
-import wundr.enderAdvancement.Main;
+import wundr.enderAdvancement.EnderAdvancement;
 
 /**
- * Copyright (c) 2016 wundrweapon<br>
+ * Copyright (c) 2016-2017 wundrweapon<br>
  * Credits to happygill16 for making the foundations for this file<br>
  * Credits to Mojang, as the spawnParticle and playSound parameters used are from their code
- * 
  * @author wundrweapon
- * @see net.minecraft.entity.monster.EntityEnderman
+ * @see net.minecraft.entity.monster.EntityEnderman#attemptTeleport(double, double, double)
  */
 public class EnderItemTeleportWand extends Item {
-	private boolean clearFallDamage, teleportAir, teleportStuck;
-	private double distance;
 	private static String name = "bebrd";
-	public static final ResourceLocation REGISTRY_RL = new ResourceLocation(Main.MOD_ID + ":" + name);
+	public static final ResourceLocation REGISTRY_RL = new ResourceLocation(EnderAdvancement.MOD_ID + ":" + name);
 	
 	public EnderItemTeleportWand() {
 		setRegistryName(REGISTRY_RL);
-		setUnlocalizedName(Main.MOD_ID + "_" + name);
+		setUnlocalizedName(EnderAdvancement.MOD_ID + "_" + name);
 	}
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
-		clearFallDamage = Main.canTakeFallDamageFromTeleport;
-		teleportAir = Main.canTeleportToAir;
-		teleportStuck = Main.canTeleportDangerously;
-		distance = Main.teleportDistance;
+		boolean clearFallDamage = EnderAdvancement.canTakeFallDamageFromTeleport;
+		boolean teleportAir = EnderAdvancement.canTeleportToAir;
+		boolean teleportStuck = EnderAdvancement.canTeleportDangerously;
+		double distance = EnderAdvancement.teleportDistance;
 		
 		RayTraceResult tracedBlock = player.rayTrace(distance, 1);
 		
@@ -67,7 +64,7 @@ public class EnderItemTeleportWand extends Item {
 					}
 				}
 				
-				world.playSound((EntityPlayer) null, new BlockPos(endPosX, endPosY, endPosZ), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.HOSTILE, 1, 1);
+				world.playSound(null, new BlockPos(endPosX, endPosY, endPosZ), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.HOSTILE, 1, 1);
 				player.setPosition(endPosX, endPosY, endPosZ);
 				player.getCooldownTracker().setCooldown(this, 5);
 				player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1, 1);
@@ -85,7 +82,7 @@ public class EnderItemTeleportWand extends Item {
 						}
 					}
 					
-					world.playSound((EntityPlayer) null, new BlockPos(endPosX, endPosY, endPosZ), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.HOSTILE, 1, 1);
+					world.playSound(null, new BlockPos(endPosX, endPosY, endPosZ), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.HOSTILE, 1, 1);
 					player.setPosition(endPosX, endPosY, endPosZ);
 					player.getCooldownTracker().setCooldown(this, 5);
 					player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1, 1);
@@ -106,7 +103,7 @@ public class EnderItemTeleportWand extends Item {
 						}
 					}
 					
-					world.playSound((EntityPlayer) null, new BlockPos(endPosX, endPosY, endPosZ), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.HOSTILE, 1, 1);
+					world.playSound(null, new BlockPos(endPosX, endPosY, endPosZ), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.HOSTILE, 1, 1);
 					player.setPosition(endPosX, endPosY, endPosZ);
 					player.getCooldownTracker().setCooldown(this, 5);
 					player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1, 1);
@@ -128,7 +125,7 @@ public class EnderItemTeleportWand extends Item {
 							}
 						}
 						
-						world.playSound((EntityPlayer) null, new BlockPos(endPosX, endPosY, endPosZ), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.HOSTILE, 1, 1);
+						world.playSound(null, new BlockPos(endPosX, endPosY, endPosZ), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.HOSTILE, 1, 1);
 						player.setPosition(endPosX, endPosY, endPosZ);
 						player.getCooldownTracker().setCooldown(this, 5);
 						player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1, 1);

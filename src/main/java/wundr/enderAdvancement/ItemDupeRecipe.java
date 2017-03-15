@@ -6,13 +6,12 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
-import wundr.enderAdvancement.item.*;
-import wundr.enderAdvancement.item.tool.EnderItemTeleportWand;
+import wundr.enderAdvancement.item.EnderItemPureCore;
+import wundr.enderAdvancement.item.IEnderItem;
 
 /**
- * Copyright (c) 2016 wundrweapon<br>
+ * Copyright (c) 2016-2017 wundrweapon<br>
  * Credits to happygill16 for making the foundations for this file
- * 
  * @author wundrweapon
  */
 public class ItemDupeRecipe implements IRecipe {
@@ -29,7 +28,7 @@ public class ItemDupeRecipe implements IRecipe {
 				if(currentStack.getItem() instanceof EnderItemPureCore) {
 					pureCoreCount++;
 				} else {
-					if((currentStack.getItem() instanceof EnderItemEssence) || (currentStack.getItem() instanceof EnderItemHeatedCore) || (currentStack.getItem() instanceof EnderItemImpureCore) || (currentStack.getItem() instanceof EnderItemStick) || (currentStack.getItem() instanceof EnderItemTeleportWand)) {
+					if(currentStack.getItem() instanceof IEnderItem) {
 						return false;
 					}
 					
@@ -42,6 +41,7 @@ public class ItemDupeRecipe implements IRecipe {
 	}
 	
 	@Override
+	@Nullable
 	public ItemStack getCraftingResult(InventoryCrafting grid) {
 		for(int slot = 0; slot < grid.getSizeInventory(); slot++) {
 			ItemStack currentStack = grid.getStackInSlot(slot);
@@ -80,7 +80,7 @@ public class ItemDupeRecipe implements IRecipe {
 				} else {
 					otherStack = grid.getStackInSlot(i).copy();
 				}
-			} catch(NullPointerException e) {
+			} catch(@SuppressWarnings("unused") NullPointerException e) {
 				continue;
 			}
 		}

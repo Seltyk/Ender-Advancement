@@ -31,13 +31,12 @@ import wundr.enderAdvancement.item.*;
 import wundr.enderAdvancement.item.tool.*;
 
 /**
- * Copyright (c) 2016 wundrweapon<br>
+ * Copyright (c) 2016-2017 wundrweapon<br>
  * Credits to happygill16 for making the foundations for this file
- * 
  * @author wundrweapon
  */
-@Mod(modid = Main.MOD_ID, useMetadata = true)
-public class Main {
+@Mod(modid = EnderAdvancement.MOD_ID, useMetadata = true)
+public class EnderAdvancement {
 	public static final String MOD_ID = "enderadvancement";
 	
 	@SidedProxy(clientSide = "wundr.enderAdvancement.ClientProxy")
@@ -73,12 +72,12 @@ public class Main {
 	}
 	
 	@EventHandler
-	public void init(FMLInitializationEvent event) {
+	public void init(@SuppressWarnings("unused") FMLInitializationEvent event) {
 		setRecipes();
 		setTabs();
 	}
 	
-	private void setConfig(FMLPreInitializationEvent event) {
+	private static void setConfig(FMLPreInitializationEvent event) {
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		
 		config.setCategoryComment("Biopneumatic End-Based Phasing Device", "Player-selected buffs/nerfs for the BEBPD");
@@ -94,7 +93,7 @@ public class Main {
 		config.save();
 	}
 	
-	private void setRecipes() {
+	private static void setRecipes() {
 		
 		//Biopneumatic End-Based Phasing Device from Ender Pearl and Ender Infused Twig x2
 		GameRegistry.addRecipe(new ItemStack(BEBRD), new Object[] {"P  ", "T  ", "T  ", 'P', Items.ENDER_PEARL, 'T', ENDER_TWIG});
@@ -128,7 +127,7 @@ public class Main {
 		GameRegistry.addRecipe(DUPLICATOR);
 	}
 	
-	private void setTabs() {
+	private static void setTabs() {
 		CreativeTabs endAdvance = new CreativeTabs("endAdvance") {
 			
 			@Override

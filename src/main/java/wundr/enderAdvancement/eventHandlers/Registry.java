@@ -5,10 +5,10 @@ import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import wundr.enderAdvancement.Main;
+import wundr.enderAdvancement.EnderAdvancement;
 
 /**
- * Copyright (c) 2016 wundrweapon
+ * Copyright (c) 2016-2017 wundrweapon
  * @author wundrweapon
  */
 @EventBusSubscriber
@@ -16,11 +16,11 @@ public class Registry {
 	
 	@SubscribeEvent
 	public static void registerItems(Register<Item> registry) {
-		registry.getRegistry().registerAll(Main.ITEMS);
+		registry.getRegistry().registerAll(EnderAdvancement.ITEMS);
 	}
 	
 	@SubscribeEvent
 	public static void registerEnchantments(Register<Enchantment> registry) {
-		registry.getRegistry().register(Main.DUPER);
+		registry.getRegistry().registerAll(EnderAdvancement.DUPER);
 	}
 }
