@@ -15,6 +15,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraft.world.World;
 import wundr.enderAdvancement.EnderAdvancement;
+import wundr.enderAdvancement.item.IEnderItem;
 
 /**
  * Copyright (c) 2016-2017 wundrweapon<br>
@@ -23,7 +24,7 @@ import wundr.enderAdvancement.EnderAdvancement;
  * @author wundrweapon
  * @see net.minecraft.entity.monster.EntityEnderman#attemptTeleport(double, double, double)
  */
-public class EnderItemTeleportWand extends Item {
+public class EnderItemTeleportWand extends Item implements IEnderItem {
 	private static String name = "bebrd";
 	public static final ResourceLocation REGISTRY_RL = new ResourceLocation(EnderAdvancement.MOD_ID + ":" + name);
 	
