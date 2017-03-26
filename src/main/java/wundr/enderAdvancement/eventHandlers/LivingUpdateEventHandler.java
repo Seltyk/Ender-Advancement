@@ -13,6 +13,7 @@ import wundr.enderAdvancement.item.EnderItemEssence;
  * @author wundrweapon
  * @see net.minecraft.entity.monster.EntityEnderman#onLivingUpdate()
  */
+@SuppressWarnings("unused")
 @EventBusSubscriber
 public class LivingUpdateEventHandler {
 	
@@ -26,9 +27,7 @@ public class LivingUpdateEventHandler {
 					player.worldObj.spawnParticle(EnumParticleTypes.PORTAL, player.posX + (player.worldObj.rand.nextDouble() - .5) * player.width, player.posY + player.worldObj.rand.nextDouble() * player.height - .25, player.posZ + (player.worldObj.rand.nextDouble() - .5) * player.width, (player.worldObj.rand.nextDouble() - .5) * 2, -player.worldObj.rand.nextDouble(), (player.worldObj.rand.nextDouble() - .5) * 2);
 					player.worldObj.spawnParticle(EnumParticleTypes.PORTAL, player.posX + (player.worldObj.rand.nextDouble() - .5) * player.width, player.posY + player.worldObj.rand.nextDouble() * player.height - .25, player.posZ + (player.worldObj.rand.nextDouble() - .5) * player.width, (player.worldObj.rand.nextDouble() - .5) * 2, -player.worldObj.rand.nextDouble(), (player.worldObj.rand.nextDouble() - .5) * 2);
 				}
-			} catch(@SuppressWarnings("unused") NullPointerException e) {
-				return;
-			}
+			} catch(NullPointerException e) {}
 		}
 	}
 }

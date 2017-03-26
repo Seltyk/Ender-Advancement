@@ -25,9 +25,4 @@ public class EnderItemPureCore extends Item implements IEnderItem {
 	public boolean isRepairable() {
 		return false;
 	}
-	
-	@Override
-	public boolean getIsRepairable(ItemStack input, ItemStack repairer) {
-		return false;
-	}
 }

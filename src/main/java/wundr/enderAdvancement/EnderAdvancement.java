@@ -36,6 +36,7 @@ import wundr.enderAdvancement.item.tool.*;
  * @author wundrweapon
  */
 @Mod(modid = EnderAdvancement.MOD_ID, useMetadata = true)
+@SuppressWarnings("unused")
 public class EnderAdvancement {
 	public static final String MOD_ID = "enderadvancement";
 	
@@ -45,22 +46,22 @@ public class EnderAdvancement {
 	public static boolean canTeleportDangerously;
 	public static boolean canTeleportToAir;
 	public static boolean canTakeFallDamageFromTeleport;
-	public static int singleChance;
-	public static int doubleChance;
+	private static int singleChance;
+	private static int doubleChance;
 	public static double teleportDistance;
 	
-	public static final ToolMaterial ENDERIUM = EnumHelper.addToolMaterial("enderium", 5, -1, 12, 4, 22);
-	public static final Item BEBRD = new EnderItemTeleportWand();
+	private static final ToolMaterial ENDERIUM = EnumHelper.addToolMaterial("enderium", 5, -1, 12, 4, 22);
+	static final Item BEBRD = new EnderItemTeleportWand();
 	public static final Item ENDER_ESSENCE = new EnderItemEssence();
-	public static final Item HEATED_CORE = new EnderItemHeatedCore();
-	public static final Item IMPURE_CORE = new EnderItemImpureCore();
-	public static final Item PURE_CORE = new EnderItemPureCore();
-	public static final Item ENDER_TWIG = new EnderItemStick();
-	public static final ItemAxe AXE_ENDER = new EnderAxe(ENDERIUM);
-	public static final ItemPickaxe PICKAXE_ENDER = new EnderPickaxe(ENDERIUM);
-	public static final ItemSpade SHOVEL_ENDER = new EnderShovel(ENDERIUM);
-	public static final ItemSword SWORD_ENDER = new EnderSword(ENDERIUM);
-	public static final IRecipe DUPLICATOR = new ItemDupeRecipe();
+	static final Item HEATED_CORE = new EnderItemHeatedCore();
+	static final Item IMPURE_CORE = new EnderItemImpureCore();
+	static final Item PURE_CORE = new EnderItemPureCore();
+	static final Item ENDER_TWIG = new EnderItemStick();
+	static final ItemAxe AXE_ENDER = new EnderAxe(ENDERIUM);
+	static final ItemPickaxe PICKAXE_ENDER = new EnderPickaxe(ENDERIUM);
+	static final ItemSpade SHOVEL_ENDER = new EnderShovel(ENDERIUM);
+	static final ItemSword SWORD_ENDER = new EnderSword(ENDERIUM);
+	private static final IRecipe DUPLICATOR = new ItemDupeRecipe();
 	public static final Enchantment DUPER = new DuperEnchantment(Rarity.VERY_RARE, EnumEnchantmentType.DIGGER, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
 	
 	public static final Item[] ITEMS = {BEBRD, ENDER_ESSENCE, HEATED_CORE, IMPURE_CORE, PURE_CORE, ENDER_TWIG, AXE_ENDER, PICKAXE_ENDER, SHOVEL_ENDER, SWORD_ENDER};
@@ -72,7 +73,7 @@ public class EnderAdvancement {
 	}
 	
 	@EventHandler
-	public void init(@SuppressWarnings("unused") FMLInitializationEvent event) {
+	public void init(FMLInitializationEvent event) {
 		setRecipes();
 		setTabs();
 	}

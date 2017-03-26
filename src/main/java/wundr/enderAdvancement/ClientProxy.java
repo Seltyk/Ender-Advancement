@@ -9,6 +9,7 @@ import wundr.enderAdvancement.item.tool.*;
  * Copyright (c) 2016-2017 wundrweapon
  * @author wundrweapon
  */
+@SuppressWarnings("unused")
 public class ClientProxy implements IProxy {
 
 	@Override

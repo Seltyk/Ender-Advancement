@@ -80,9 +80,7 @@ public class ItemDupeRecipe implements IRecipe {
 				} else {
 					otherStack = grid.getStackInSlot(i).copy();
 				}
-			} catch(@SuppressWarnings("unused") NullPointerException e) {
-				continue;
-			}
+			} catch(@SuppressWarnings("unused") NullPointerException e) {}
 		}
 		
 		grid.clear();
