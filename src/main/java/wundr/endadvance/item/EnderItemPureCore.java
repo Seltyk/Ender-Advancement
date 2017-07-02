@@ -1,9 +1,8 @@
-package wundr.enderAdvancement.item;
+package wundr.endadvance.item;
 
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import wundr.enderAdvancement.EnderAdvancement;
+import wundr.endadvance.EnderAdvancement;
 
 /**
  * Copyright (c) 2016-2017 wundrweapon<br>
@@ -11,12 +10,12 @@ import wundr.enderAdvancement.EnderAdvancement;
  * @author wundrweapon
  */
 public class EnderItemPureCore extends Item implements IEnderItem {
-	private static String name = "pure_core";
-	public static final ResourceLocation REGISTRY_RL = new ResourceLocation(EnderAdvancement.MOD_ID + ":" + name);
+	private static final String NAME = "pure_core";
+	public static final ResourceLocation REGISTRY_RL = new ResourceLocation(EnderAdvancement.MOD_ID + ":" + NAME);
 	
 	public EnderItemPureCore() {
 		setRegistryName(REGISTRY_RL);
-		setUnlocalizedName(EnderAdvancement.MOD_ID + "_" + name);
+		setUnlocalizedName(EnderAdvancement.MOD_ID + "_" + NAME);
 		setMaxDamage(50);
 		setMaxStackSize(16);
 	}

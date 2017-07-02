@@ -1,9 +1,10 @@
-package wundr.enderAdvancement;
+package wundr.endadvance.proxy;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
-import wundr.enderAdvancement.item.*;
-import wundr.enderAdvancement.item.tool.*;
+import wundr.endadvance.EnderAdvancement;
+import wundr.endadvance.item.*;
+import wundr.endadvance.item.tool.*;
 
 /**
  * Copyright (c) 2016-2017 wundrweapon

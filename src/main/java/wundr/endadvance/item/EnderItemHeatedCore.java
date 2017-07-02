@@ -1,8 +1,8 @@
-package wundr.enderAdvancement.item;
+package wundr.endadvance.item;
 
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
-import wundr.enderAdvancement.EnderAdvancement;
+import wundr.endadvance.EnderAdvancement;
 
 /**
  * Copyright (c) 2016-2017 wundrweapon<br>
@@ -10,11 +10,11 @@ import wundr.enderAdvancement.EnderAdvancement;
  * @author wundrweapon
  */
 public class EnderItemHeatedCore extends Item implements IEnderItem {
-	private static String name = "heated_core";
-	public static final ResourceLocation REGISTRY_RL = new ResourceLocation(EnderAdvancement.MOD_ID + ":" + name);
+	private static final String NAME = "heated_core";
+	public static final ResourceLocation REGISTRY_RL = new ResourceLocation(EnderAdvancement.MOD_ID + ":" + NAME);
 	
 	public EnderItemHeatedCore() {
 		setRegistryName(REGISTRY_RL);
-		setUnlocalizedName(EnderAdvancement.MOD_ID + "_" + name);
+		setUnlocalizedName(EnderAdvancement.MOD_ID + "_" + NAME);
 	}
 }

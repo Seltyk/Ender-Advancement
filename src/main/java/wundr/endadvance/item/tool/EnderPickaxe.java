@@ -1,19 +1,16 @@
-package wundr.enderAdvancement.item.tool;
+package wundr.endadvance.item.tool;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import wundr.enderAdvancement.EnderAdvancement;
-import wundr.enderAdvancement.item.IEnderItem;
-
-import java.util.List;
+import wundr.endadvance.EnderAdvancement;
+import wundr.endadvance.item.IEnderItem;
 
 /**
  * Copyright (c) 2016-2017 wundrweapon<br>
@@ -21,13 +18,13 @@ import java.util.List;
  * @author wundrweapon
  */
 public class EnderPickaxe extends ItemPickaxe implements IEnderItem {
-	private static String name = "pick";
-	public static final ResourceLocation REGISTRY_RL = new ResourceLocation(EnderAdvancement.MOD_ID + ":" + name);
+	private static final String NAME = "pick";
+	public static final ResourceLocation REGISTRY_RL = new ResourceLocation(EnderAdvancement.MOD_ID + ":" + NAME);
 	
 	public EnderPickaxe(ToolMaterial material) {
 		super(material);
 		setRegistryName(REGISTRY_RL);
-		setUnlocalizedName(EnderAdvancement.MOD_ID + "_" + name);
+		setUnlocalizedName(EnderAdvancement.MOD_ID + "_" + NAME);
 	}
 	
 	@Override
@@ -37,10 +34,10 @@ public class EnderPickaxe extends ItemPickaxe implements IEnderItem {
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs tab, List<ItemStack> subItems) {
-		super.getSubItems(item, tab, subItems);
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+		super.getSubItems(tab, items);
 		
-		for(ItemStack stack : subItems) {
+		for(ItemStack stack : items) {
 			stack.addEnchantment(EnderAdvancement.DUPER, 1);
 		}
 	}

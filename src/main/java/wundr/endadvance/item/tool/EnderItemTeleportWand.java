@@ -1,4 +1,4 @@
-package wundr.enderAdvancement.item.tool;
+package wundr.endadvance.item.tool;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -14,8 +14,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraft.world.World;
-import wundr.enderAdvancement.EnderAdvancement;
-import wundr.enderAdvancement.item.IEnderItem;
+import wundr.endadvance.EnderAdvancement;
+import wundr.endadvance.item.IEnderItem;
 
 /**
  * Copyright (c) 2016-2017 wundrweapon<br>
@@ -25,17 +25,17 @@ import wundr.enderAdvancement.item.IEnderItem;
  * @see net.minecraft.entity.monster.EntityEnderman#attemptTeleport(double, double, double)
  */
 public class EnderItemTeleportWand extends Item implements IEnderItem {
-	private static String name = "bebrd";
-	public static final ResourceLocation REGISTRY_RL = new ResourceLocation(EnderAdvancement.MOD_ID + ":" + name);
+	private static final String NAME = "bebrd";
+	public static final ResourceLocation REGISTRY_RL = new ResourceLocation(EnderAdvancement.MOD_ID + ":" + NAME);
 	
 	public EnderItemTeleportWand() {
 		setRegistryName(REGISTRY_RL);
-		setUnlocalizedName(EnderAdvancement.MOD_ID + "_" + name);
+		setUnlocalizedName(EnderAdvancement.MOD_ID + "_" + NAME);
 	}
 	
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
-		boolean clearFallDamage = EnderAdvancement.canTakeFallDamageFromTeleport;
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		boolean clearFallDamage = EnderAdvancement.canTeleportResetFallDamage;
 		boolean teleportAir = EnderAdvancement.canTeleportToAir;
 		boolean teleportStuck = EnderAdvancement.canTeleportDangerously;
 		double distance = EnderAdvancement.teleportDistance;
@@ -65,12 +65,12 @@ public class EnderItemTeleportWand extends Item implements IEnderItem {
 					}
 				}
 				
-				world.playSound(null, new BlockPos(endPosX, endPosY, endPosZ), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.HOSTILE, 1, 1);
+				player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1, 1);
 				player.setPosition(endPosX, endPosY, endPosZ);
 				player.getCooldownTracker().setCooldown(this, 5);
 				player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1, 1);
 				
-				return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
+				return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 			} else if(endPosAir && !endPosStuck) {
 				if(teleportAir) {
 					if(clearFallDamage) {
@@ -88,9 +88,9 @@ public class EnderItemTeleportWand extends Item implements IEnderItem {
 					player.getCooldownTracker().setCooldown(this, 5);
 					player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1, 1);
 					
-					return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
+					return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 				} else {
-					return ActionResult.newResult(EnumActionResult.PASS, stack);
+					return ActionResult.newResult(EnumActionResult.PASS, player.getHeldItem(hand));
 				}
 			} else if(!endPosAir && endPosStuck) {
 				if(teleportStuck) {
@@ -109,9 +109,9 @@ public class EnderItemTeleportWand extends Item implements IEnderItem {
 					player.getCooldownTracker().setCooldown(this, 5);
 					player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1, 1);
 					
-					return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
+					return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 				} else {
-					return ActionResult.newResult(EnumActionResult.PASS, stack);
+					return ActionResult.newResult(EnumActionResult.PASS, player.getHeldItem(hand));
 				}
 			} else if(endPosAir && endPosStuck) {
 				if(teleportAir) {
@@ -131,18 +131,18 @@ public class EnderItemTeleportWand extends Item implements IEnderItem {
 						player.getCooldownTracker().setCooldown(this, 5);
 						player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1, 1);
 						
-						return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
+						return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 					} else {
-						return ActionResult.newResult(EnumActionResult.PASS, stack);
+						return ActionResult.newResult(EnumActionResult.PASS, player.getHeldItem(hand));
 					}
 				} else {
-					return ActionResult.newResult(EnumActionResult.PASS, stack);
+					return ActionResult.newResult(EnumActionResult.PASS, player.getHeldItem(hand));
 				}
 			} else {
-				return ActionResult.newResult(EnumActionResult.FAIL, stack);
+				return ActionResult.newResult(EnumActionResult.FAIL, player.getHeldItem(hand));
 			}
 		} else {
-			return ActionResult.newResult(EnumActionResult.PASS, stack);
+			return ActionResult.newResult(EnumActionResult.PASS, player.getHeldItem(hand));
 		}
 	}
 }

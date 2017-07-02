@@ -1,4 +1,4 @@
-package wundr.enderAdvancement.item;
+package wundr.endadvance.item;
 
 /**
  * Not gonna lie, this is only here because I didn't want

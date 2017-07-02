@@ -1,4 +1,4 @@
-package wundr.enderAdvancement;
+package wundr.endadvance.proxy;
 
 /**
  * Copyright (c) 2016-2017 wundrweapon

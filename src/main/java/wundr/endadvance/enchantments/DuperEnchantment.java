@@ -1,10 +1,10 @@
-package wundr.enderAdvancement.enchantments;
+package wundr.endadvance.enchantments;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
-import wundr.enderAdvancement.EnderAdvancement;
+import wundr.endadvance.EnderAdvancement;
 
 /**
  * Copyright (c) 2016-2017 wundrweapon<br>
@@ -12,12 +12,12 @@ import wundr.enderAdvancement.EnderAdvancement;
  * @author wundrweapon
  */
 public class DuperEnchantment extends Enchantment {
-	private static String name = "duper";
-	public static final String REGISTRY_RL = EnderAdvancement.MOD_ID + ":" + name;
+	private static final String NAME = "duper";
+	public static final String REGISTRY_RL = EnderAdvancement.MOD_ID + ":" + NAME;
 	
 	public DuperEnchantment(Rarity rarity, EnumEnchantmentType enchType, EntityEquipmentSlot[] slots) {
 		super(rarity, enchType, slots);
-		setName(name);
+		setName(NAME);
 		setRegistryName(REGISTRY_RL);
 	}
 	
