@@ -38,7 +38,9 @@ public class EnderPickaxe extends ItemPickaxe implements IEnderItem {
 		super.getSubItems(tab, items);
 		
 		for(ItemStack stack : items) {
-			stack.addEnchantment(EnderAdvancement.DUPER, 1);
+			if(stack != null && stack.getItem() instanceof EnderPickaxe) {
+				stack.addEnchantment(EnderAdvancement.DUPER, 1);
+			}
 		}
 	}
 }
