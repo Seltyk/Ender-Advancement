@@ -1,48 +1,23 @@
-## Edited from https://gist.github.com/Choonster/6447037d24d0ed5898b8
-
-run/
-.gradle/
-build/
-gradle-app.setting
-
-## IntelliJ IDEA
-
-.idea/
-out/
-*.iml
-*.iws
-*.ipr
-
-## Eclipse
-
-eclipse/
-*.pydevproject
-.project
-.metadata
-bin/
-tmp/
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.classpath
-.settings/
-.loadpath
-
-# External tool builders
-.externalToolBuilders/
-
-# Locally stored "Eclipse launch configurations"
+# eclipse
+bin
 *.launch
+.settings
+.metadata
+.classpath
+.project
 
-# CDT-specific
-.cproject
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
 
-# PDT-specific
-.buildpath
+# gradle
+build
+.gradle
 
-## Other things in my workspace
-
-*.zip
-libs/
+# other
+eclipse
+run
+forge-1.12-14.21.1.2387-mdk.zip
