@@ -24,7 +24,7 @@ public class HarvestDropsEventHandler {
 	@SubscribeEvent
 	public static void onHarvestDrops(HarvestDropsEvent event) {
 		try {
-			if(Booleans.isEnchanted(EnderAdvancement.DUPER, event.getHarvester().getActiveItemStack()) || event.getHarvester().getActiveItemStack().getItem() instanceof EnderPickaxe) {
+			if(Booleans.isEnchanted(EnderAdvancement.DUPER, event.getHarvester().getActiveItemStack())) {
 				ArrayList<ItemStack> dropsCopy = new ArrayList<>(event.getDrops()); //Copies the drops list to a new ArrayList
 				
 				for(ItemStack drop : dropsCopy) {

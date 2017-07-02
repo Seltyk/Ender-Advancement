@@ -1,6 +1,5 @@
 package wundr.endadvance;
 
-import com.sun.org.apache.regexp.internal.RE;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantment.Rarity;
