@@ -14,6 +14,7 @@ import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.util.EnumHelper;
@@ -110,7 +111,7 @@ public class EnderAdvancement {
 	private static void setRecipes() {
 		
 		//Biopneumatic End-Based Phasing Device from Ender Pearl and Ender Infused Twig x2
-		GameRegistry.addShapedRecipe(new ResourceLocation(MOD_ID + ":bebrd_recipe"), RECIPE_GROUP, new ItemStack(BEBRD), "P  ", "T  ", "T  ", 'P', Items.ENDER_PEARL, 'T', ENDER_TWIG);
+		GameRegistry.addShapedRecipe(new ResourceLocation(MOD_ID + ":bebrd_recipe"), RECIPE_GROUP, new ItemStack(BEBRD), "E  ", "T  ", "T  ", 'P', Items.ENDER_EYE, 'T', ENDER_TWIG);
 		
 		//Impure Ender Core from Ender Essence x4, Ender Pearl x4, and Ender Eye
 		GameRegistry.addShapedRecipe(new ResourceLocation(MOD_ID + ":impure_core_recipe"), RECIPE_GROUP, new ItemStack(IMPURE_CORE), "EPE", "PYP", "EPE", 'E', ENDER_ESSENCE, 'P', Items.ENDER_PEARL, 'Y', Items.ENDER_EYE);
@@ -121,8 +122,8 @@ public class EnderAdvancement {
 		//Pure Ender Core from Ender Essence x4, Iron Ingot x4, and Heated Ender Core
 		GameRegistry.addShapedRecipe(new ResourceLocation(MOD_ID + ":pure_core_recipe"), RECIPE_GROUP, new ItemStack(PURE_CORE), "EIE", "IHI", "EIE", 'E', ENDER_ESSENCE, 'I', Items.IRON_INGOT, 'H', HEATED_CORE);
 		
-		//Ender Infused Twig x4 from Stick x2 and Pure Ender Core
-		GameRegistry.addShapedRecipe(new ResourceLocation(MOD_ID + ":twig_recipe"), RECIPE_GROUP, new ItemStack(ENDER_TWIG, 4), "S  ", "P  ", "S  ", 'S', Items.STICK, 'P', PURE_CORE);
+		//Ender Infused Twig from Stick and Ender Essence x2
+		GameRegistry.addShapelessRecipe(new ResourceLocation(MOD_ID + ":twig_recipe"), RECIPE_GROUP, new ItemStack(ENDER_TWIG, 2), Ingredient.fromItem(Items.STICK), Ingredient.fromItem(ENDER_ESSENCE), Ingredient.fromItem(ENDER_ESSENCE));
 		
 		//Ender Pickaxe from Ender Eye x3 and Ender Infused Twig x2
 		GameRegistry.addShapedRecipe(new ResourceLocation(MOD_ID + ":pick_recipe"), RECIPE_GROUP, new ItemStack(PICKAXE_ENDER), "EEE", " T ", " T ", 'E', Items.ENDER_EYE, 'T', ENDER_TWIG);
@@ -157,10 +158,10 @@ public class EnderAdvancement {
 		};
 		
 		ENDER_ESSENCE.setCreativeTab(endAdvance);
+		ENDER_TWIG.setCreativeTab(endAdvance);
 		HEATED_CORE.setCreativeTab(endAdvance);
 		IMPURE_CORE.setCreativeTab(endAdvance);
 		PURE_CORE.setCreativeTab(endAdvance);
-		ENDER_TWIG.setCreativeTab(endAdvance);
 		AXE_ENDER.setCreativeTab(endAdvanceTools);
 		BEBRD.setCreativeTab(endAdvanceTools);
 		PICKAXE_ENDER.setCreativeTab(endAdvanceTools);
