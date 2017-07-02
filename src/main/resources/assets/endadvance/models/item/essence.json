@@ -1,0 +1,6 @@
+{
+    "parent": "endadvance:item/handheld",
+    "textures": {
+        "layer0": "endadvance:items/essence"
+    }
+}

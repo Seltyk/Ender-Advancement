@@ -1,5 +1,5 @@
 {
-    "parent": "enderadvancement:item/generated",
+    "parent": "endadvance:item/generated",
     "display": {
         "thirdperson_righthand": {
             "rotation": [ 0, -90, 55 ],
