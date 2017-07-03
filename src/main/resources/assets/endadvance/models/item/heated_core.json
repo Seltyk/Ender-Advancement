@@ -1,5 +1,5 @@
 {
-    "parent": "endadvance:item/handheld",
+    "parent": "item/generated",
     "textures": {
         "layer0": "endadvance:items/heated_core"
     }

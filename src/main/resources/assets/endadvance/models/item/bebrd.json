@@ -1,6 +1,6 @@
 {
-    "parent": "endadvance:item/handheld",
+    "parent": "item/handheld",
     "textures": {
-        "layer0": "endadvance:items/bebrpd"
+        "layer0": "endadvance:items/bebrd"
     }
 }
