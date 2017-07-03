@@ -111,7 +111,7 @@ public class EnderAdvancement {
 	private static void setRecipes() {
 		
 		//Biopneumatic End-Based Phasing Device from Ender Pearl and Ender Infused Twig x2
-		GameRegistry.addShapedRecipe(new ResourceLocation(MOD_ID + ":bebrd_recipe"), RECIPE_GROUP, new ItemStack(BEBRD), "E  ", "T  ", "T  ", 'P', Items.ENDER_EYE, 'T', ENDER_TWIG);
+		GameRegistry.addShapedRecipe(new ResourceLocation(MOD_ID + ":bebrd_recipe"), RECIPE_GROUP, new ItemStack(BEBRD), "E  ", "T  ", "T  ", 'E', Items.ENDER_EYE, 'T', ENDER_TWIG);
 		
 		//Impure Ender Core from Ender Essence x4, Ender Pearl x4, and Ender Eye
 		GameRegistry.addShapedRecipe(new ResourceLocation(MOD_ID + ":impure_core_recipe"), RECIPE_GROUP, new ItemStack(IMPURE_CORE), "EPE", "PYP", "EPE", 'E', ENDER_ESSENCE, 'P', Items.ENDER_PEARL, 'Y', Items.ENDER_EYE);
