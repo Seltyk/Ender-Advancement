@@ -83,7 +83,7 @@ public class EnderItemTeleportWand extends Item implements IEnderItem {
 						}
 					}
 					
-					world.playSound(null, new BlockPos(endPosX, endPosY, endPosZ), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.HOSTILE, 1, 1);
+					player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1, 1);
 					player.setPosition(endPosX, endPosY, endPosZ);
 					player.getCooldownTracker().setCooldown(this, 5);
 					player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1, 1);
@@ -104,7 +104,7 @@ public class EnderItemTeleportWand extends Item implements IEnderItem {
 						}
 					}
 					
-					world.playSound(null, new BlockPos(endPosX, endPosY, endPosZ), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.HOSTILE, 1, 1);
+					player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1, 1);
 					player.setPosition(endPosX, endPosY, endPosZ);
 					player.getCooldownTracker().setCooldown(this, 5);
 					player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1, 1);
@@ -126,7 +126,7 @@ public class EnderItemTeleportWand extends Item implements IEnderItem {
 							}
 						}
 						
-						world.playSound(null, new BlockPos(endPosX, endPosY, endPosZ), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.HOSTILE, 1, 1);
+						player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1, 1);
 						player.setPosition(endPosX, endPosY, endPosZ);
 						player.getCooldownTracker().setCooldown(this, 5);
 						player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1, 1);

@@ -21,7 +21,7 @@ public class LivingDeathEventHandler {
 	
 	@SubscribeEvent
 	public static void onLivingDeath(LivingDeathEvent event) {
-		if(event.getEntity() instanceof EntityEnderman) {
+		if(event.getEntity().getClass() == EntityEnderman.class) {
 			Random rand = new Random(event.getEntity().world.getSeed());
 			
 			if(rand.nextInt(EnderAdvancement.singleChance) == EnderAdvancement.singleChance - 1) {

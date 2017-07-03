@@ -13,6 +13,7 @@ import wundr.endadvance.item.EnderItemEssence;
  * @author wundrweapon
  * @see net.minecraft.entity.monster.EntityEnderman#onLivingUpdate()
  */
+//TODO: support any entity (other than EntityEnderman) holding the BEBRD
 @EventBusSubscriber
 @SuppressWarnings("unused")
 public class LivingUpdateEventHandler {
