@@ -1,5 +1,6 @@
 package wundr.endadvance;
 
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantment.Rarity;
@@ -16,11 +17,11 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -33,8 +34,10 @@ import wundr.endadvance.item.EnderItemImpureCore;
 import wundr.endadvance.item.EnderItemPureCore;
 import wundr.endadvance.item.EnderItemStick;
 import wundr.endadvance.item.tool.*;
-import wundr.endadvance.proxy.IProxy;
 import wundr.endadvance.recipes.ItemDupeRecipe;
+
+//import net.minecraftforge.fml.common.SidedProxy;
+//import wundr.endadvance.proxy.IProxy;
 
 /**
  * Copyright (c) 2016-2017 wundrweapon<br>
@@ -46,8 +49,8 @@ import wundr.endadvance.recipes.ItemDupeRecipe;
 public class EnderAdvancement {
 	public static final String MOD_ID = "endadvance";
 	
-	@SidedProxy(clientSide = "wundr.endadvance.proxy.ClientProxy")
-	public static IProxy proxy;
+//	@SidedProxy(clientSide = "wundr.endadvance.proxy.ClientProxy")
+//	public static IProxy proxy;
 	
 	public static boolean canTeleportDangerously;
 	public static boolean canTeleportToAir;
@@ -83,7 +86,6 @@ public class EnderAdvancement {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		setConfig(event);
-		proxy.setModels();
 	}
 	
 	@EventHandler

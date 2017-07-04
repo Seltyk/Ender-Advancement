@@ -7,7 +7,6 @@ import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import wundr.endadvance.EnderAdvancement;
-import wundr.endadvance.item.tool.EnderPickaxe;
 import wundr.modutils.Booleans;
 
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
  * Credits to happygill16 for making the original version of this file
  * @author wundrweapon
  */
-@EventBusSubscriber
+@EventBusSubscriber(modid = EnderAdvancement.MOD_ID)
 @SuppressWarnings("unused")
 public class HarvestDropsEventHandler {
 

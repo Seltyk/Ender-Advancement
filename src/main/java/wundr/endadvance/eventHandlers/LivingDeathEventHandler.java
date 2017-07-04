@@ -15,7 +15,7 @@ import wundr.endadvance.EnderAdvancement;
  * Credits to happygill16 for making the foundations for this file
  * @author wundrweapon
  */
-@EventBusSubscriber
+@EventBusSubscriber(modid = EnderAdvancement.MOD_ID)
 @SuppressWarnings("unused")
 public class LivingDeathEventHandler {
 	

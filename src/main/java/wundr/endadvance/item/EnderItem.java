@@ -18,8 +18,4 @@ public class EnderItem extends Item {
 		setRegistryName(registryLocation);
 		setUnlocalizedName(EnderAdvancement.MOD_ID + "_" + name);
 	}
-	
-	public final ResourceLocation getRegistryLocation() {
-		return registryLocation;
-	}
 }

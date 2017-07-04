@@ -5,6 +5,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import wundr.endadvance.EnderAdvancement;
 import wundr.endadvance.item.EnderItemEssence;
 
 /**
@@ -14,7 +15,7 @@ import wundr.endadvance.item.EnderItemEssence;
  * @see net.minecraft.entity.monster.EntityEnderman#onLivingUpdate()
  */
 //TODO: support any entity (other than EntityEnderman) holding the BEBRD
-@EventBusSubscriber
+@EventBusSubscriber(modid = EnderAdvancement.MOD_ID)
 @SuppressWarnings("unused")
 public class LivingUpdateEventHandler {
 	
