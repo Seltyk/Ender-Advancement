@@ -14,8 +14,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import wundr.endadvance.EnderAdvancement;
+import wundr.endadvance.item.EnderItem;
 import wundr.endadvance.item.EnderItemPureCore;
-import wundr.endadvance.item.IEnderItem;
 
 /**
  * Copyright (c) 2016-2017 wundrweapon<br>
@@ -60,7 +60,9 @@ public class ItemDupeRecipe implements IRecipe {
 				if(currentStack.getItem() instanceof EnderItemPureCore) {
 					pureCoreCount++;
 				} else {
-					if(currentStack.getItem() instanceof IEnderItem) {
+					
+					//Is it any item from the mod? If so, then too bad, you're not cloning it
+					if(currentStack.getItem().getClass().getPackage().getName().substring(0, 21).equalsIgnoreCase("wundr.endadvance.item")) {
 						return false;
 					}
 					
@@ -69,7 +71,7 @@ public class ItemDupeRecipe implements IRecipe {
 			}
 		}
 		
-		return (otherItemCount == 1) && (pureCoreCount == 1);
+		return otherItemCount == 1 && pureCoreCount == 1;
 	}
 	
 	@Override
@@ -149,10 +151,10 @@ public class ItemDupeRecipe implements IRecipe {
 		return out;
 	}
 	
+	//No isHidden() - its default implementation is fine
+	
 	@Override
 	public String getGroup() {
 		return EnderAdvancement.RECIPE_GROUP.toString();
 	}
-	
-	//No isHidden() its default implementation is fine
 }
