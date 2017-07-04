@@ -2,20 +2,17 @@ package wundr.endadvance.item.tool;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraft.world.World;
 import wundr.endadvance.EnderAdvancement;
-import wundr.endadvance.item.IEnderItem;
+import wundr.endadvance.item.EnderItem;
 
 /**
  * Copyright (c) 2016-2017 wundrweapon<br>
@@ -24,13 +21,9 @@ import wundr.endadvance.item.IEnderItem;
  * @author wundrweapon
  * @see net.minecraft.entity.monster.EntityEnderman#attemptTeleport(double, double, double)
  */
-public class EnderItemTeleportWand extends Item implements IEnderItem {
-	private static final String NAME = "bebrd";
-	public static final ResourceLocation REGISTRY_RL = new ResourceLocation(EnderAdvancement.MOD_ID + ":" + NAME);
-	
+public class EnderItemTeleportWand extends EnderItem {
 	public EnderItemTeleportWand() {
-		setRegistryName(REGISTRY_RL);
-		setUnlocalizedName(EnderAdvancement.MOD_ID + "_" + NAME);
+		super("bebrd");
 	}
 	
 	@Override

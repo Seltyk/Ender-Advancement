@@ -8,11 +8,11 @@
   "url": "",
   "updateUrl": "",
   "authorList": ["wundrweapon"],
-  "credits": "happygill16 for making the foundation of the mod, and Corcustos, ccc3593, and Ruthless_bug for textures",
+  "credits": "happygill16 for making the foundation of the mod; Corcustos, ccc3593, and Ruthless_bug for textures",
   "logoFile": "",
   "screenshots": [],
   "useDependencyInformation": true,
   "dependencies": ["wundrmodutils"],
-  "requiredMods": ["wundrmodutils"]
+  "requiredMods": []
 }
 ]
