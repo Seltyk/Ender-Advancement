@@ -3,6 +3,7 @@ package wundr.endadvance.eventHandlers;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemBlockSpecial;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -19,11 +20,20 @@ import java.util.ArrayList;
 @EventBusSubscriber(modid = EnderAdvancement.MOD_ID)
 @SuppressWarnings("unused")
 public class HarvestDropsEventHandler {
+	
+	@SubscribeEvent
+	public static void onBreak(BreakEvent event) {
+		try {
+			if(Booleans.isEnchanted(EnderAdvancement.DUPER, event.getPlayer().getHeldItemMainhand())) {
+				event.setExpToDrop(event.getExpToDrop() * 2);
+			}
+		} catch(NullPointerException e) {}
+	}
 
 	@SubscribeEvent
 	public static void onHarvestDrops(HarvestDropsEvent event) {
 		try {
-			if(Booleans.isEnchanted(EnderAdvancement.DUPER, event.getHarvester().getActiveItemStack())) {
+			if(Booleans.isEnchanted(EnderAdvancement.DUPER, event.getHarvester().getHeldItemMainhand())) {
 				ArrayList<ItemStack> dropsCopy = new ArrayList<>(event.getDrops()); //Copies the drops list to a new ArrayList
 				
 				for(ItemStack drop : dropsCopy) {
