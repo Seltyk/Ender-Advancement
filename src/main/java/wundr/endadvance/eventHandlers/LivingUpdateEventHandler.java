@@ -1,6 +1,7 @@
 package wundr.endadvance.eventHandlers;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -8,26 +9,29 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import wundr.endadvance.EnderAdvancement;
 import wundr.endadvance.item.EnderItemEssence;
 
+import java.util.ArrayList;
+
 /**
  * Copyright (c) 2016-2017 wundrweapon<br>
  * Credits to Mojang, as the spawnParticle parameters used are from their code
  * @author wundrweapon
  * @see net.minecraft.entity.monster.EntityEnderman#onLivingUpdate()
  */
-//TODO: support any entity (other than EntityEnderman) holding the BEBRD
 @EventBusSubscriber(modid = EnderAdvancement.MOD_ID)
 @SuppressWarnings("unused")
 public class LivingUpdateEventHandler {
 	
 	@SubscribeEvent
 	public static void onLivingUpdate(LivingUpdateEvent event) {
-		if(event.getEntity() instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) event.getEntity();
-			
+		if(!(event.getEntity() instanceof EntityEnderman)) {
 			try {
-				if((player.getHeldItemMainhand().getItem() instanceof EnderItemEssence || player.getHeldItemOffhand().getItem() instanceof EnderItemEssence) && player.world.isRemote) {
-					player.world.spawnParticle(EnumParticleTypes.PORTAL, player.posX + (player.world.rand.nextDouble() - .5) * player.width, player.posY + player.world.rand.nextDouble() * player.height - .25, player.posZ + (player.world.rand.nextDouble() - .5) * player.width, (player.world.rand.nextDouble() - .5) * 2, -player.world.rand.nextDouble(), (player.world.rand.nextDouble() - .5) * 2);
-					player.world.spawnParticle(EnumParticleTypes.PORTAL, player.posX + (player.world.rand.nextDouble() - .5) * player.width, player.posY + player.world.rand.nextDouble() * player.height - .25, player.posZ + (player.world.rand.nextDouble() - .5) * player.width, (player.world.rand.nextDouble() - .5) * 2, -player.world.rand.nextDouble(), (player.world.rand.nextDouble() - .5) * 2);
+				for(ItemStack stack : event.getEntity().getHeldEquipment()) {
+					if(stack.getItem() instanceof EnderItemEssence) {
+						for(int i = 0; i < stack.getCount(); i++) {
+							event.getEntity().world.spawnParticle(EnumParticleTypes.PORTAL, event.getEntity().posX + (event.getEntity().world.rand.nextDouble() - .5) * event.getEntity().width, event.getEntity().posY + event.getEntity().world.rand.nextDouble() * event.getEntity().height - .25, event.getEntity().posZ + (event.getEntity().world.rand.nextDouble() - .5) * event.getEntity().width, (event.getEntity().world.rand.nextDouble() - .5) * 2, -event.getEntity().world.rand.nextDouble(), (event.getEntity().world.rand.nextDouble() - .5) * 2);
+							event.getEntity().world.spawnParticle(EnumParticleTypes.PORTAL, event.getEntity().posX + (event.getEntity().world.rand.nextDouble() - .5) * event.getEntity().width, event.getEntity().posY + event.getEntity().world.rand.nextDouble() * event.getEntity().height - .25, event.getEntity().posZ + (event.getEntity().world.rand.nextDouble() - .5) * event.getEntity().width, (event.getEntity().world.rand.nextDouble() - .5) * 2, -event.getEntity().world.rand.nextDouble(), (event.getEntity().world.rand.nextDouble() - .5) * 2);
+						}
+					}
 				}
 			} catch(NullPointerException e) {}
 		}
