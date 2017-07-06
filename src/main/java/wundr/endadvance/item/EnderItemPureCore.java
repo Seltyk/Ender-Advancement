@@ -8,8 +8,8 @@ package wundr.endadvance.item;
 public class EnderItemPureCore extends EnderItem {
 	public EnderItemPureCore() {
 		super("pure_core");
-		setMaxDamage(50);
 		setMaxStackSize(1);
+		setMaxDamage(50);
 		setNoRepair();
 	}
 }

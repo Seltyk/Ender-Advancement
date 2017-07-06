@@ -25,7 +25,7 @@ import wundr.endadvance.item.EnderItemPureCore;
 //Normally, I'd organize the class, but I'm using this order to keep up-to-date with any changes to superclasses
 public class ItemDupeRecipe implements IRecipe {
 	private ResourceLocation regName;
-	private TypeToken<IRecipe> token = new TypeToken<IRecipe>(getClass()) {}; //Don't mind me, just borring Forge code
+	private TypeToken<IRecipe> token = new TypeToken<IRecipe>(getClass()) {}; //Don't mind me, just borrowing Forge code
 	
 	public ItemDupeRecipe(ResourceLocation resourceLocation) {
 		setRegistryName(resourceLocation);
@@ -62,9 +62,11 @@ public class ItemDupeRecipe implements IRecipe {
 				} else {
 					
 					//Is it any item from the mod? If so, then too bad, you're not cloning it
-					if(currentStack.getItem().getClass().getPackage().getName().substring(0, 21).equalsIgnoreCase("wundr.endadvance.item")) {
-						return false;
-					}
+					try {
+						if(currentStack.getItem().getClass().getPackage().getName().substring(0, 21).equalsIgnoreCase("wundr.endadvance.item")) {
+							return false;
+						}
+					} catch(NullPointerException e) {}
 					
 					otherItemCount++;
 				}
@@ -76,17 +78,19 @@ public class ItemDupeRecipe implements IRecipe {
 	
 	@Override
 	public ItemStack getCraftingResult(InventoryCrafting grid) {
-		for(int slot = 0; slot < grid.getSizeInventory(); slot++) {
-			ItemStack currentStack = grid.getStackInSlot(slot);
-			
-			if(!currentStack.isEmpty() && !(currentStack.getItem() instanceof EnderItemPureCore)) {
-				ItemStack cloneStack = currentStack.copy();
-				cloneStack.setCount(currentStack.getCount() * 2);
-				return cloneStack;
+		ItemStack pureCore = ItemStack.EMPTY;
+		ItemStack outStack = ItemStack.EMPTY;
+		
+		for(int i = 0; i < grid.getSizeInventory(); i++) {
+			if(grid.getStackInSlot(i).getItem() instanceof EnderItemPureCore) {
+				pureCore = grid.getStackInSlot(i).copy();
+			} else if(!grid.getStackInSlot(i).isEmpty()) {
+				outStack = grid.getStackInSlot(i).copy();
 			}
 		}
 		
-		return null; //Won't run
+		outStack.setCount(outStack.getCount() * 2 <= pureCore.getCount() ? outStack.getCount() * 2 : (pureCore.getMaxDamage() - pureCore.getItemDamage()) * 2);
+		return outStack;
 	}
 	
 	@Override
@@ -96,34 +100,32 @@ public class ItemDupeRecipe implements IRecipe {
 	
 	@Override
 	public ItemStack getRecipeOutput() {
-		return ItemStack.EMPTY; //Recipe is too complex to support this unused system
+		return ItemStack.EMPTY; //Recipe is too complex to support this archaic system
 	}
 	
 	@Override
 	public NonNullList<ItemStack> getRemainingItems(InventoryCrafting grid) {
-		ItemStack pureCore = null;
-		ItemStack otherStack = null;
+		ItemStack pureCore = ItemStack.EMPTY;
+		ItemStack cloneStack = ItemStack.EMPTY;
 		
 		for(int i = 0; i < grid.getSizeInventory(); i++) {
-			try {
-				if(grid.getStackInSlot(i).getItem() instanceof EnderItemPureCore) {
-					pureCore = grid.getStackInSlot(i).copy();
-				} else {
-					otherStack = grid.getStackInSlot(i).copy();
-				}
-			} catch(NullPointerException e) {}
+			if(grid.getStackInSlot(i).getItem() instanceof EnderItemPureCore) {
+				pureCore = grid.getStackInSlot(i).copy();
+			} else if(!grid.getStackInSlot(i).isEmpty()) {
+				cloneStack = grid.getStackInSlot(i).copy();
+			}
 		}
 		
 		grid.clear();
 		
-		if(otherStack.getCount() < pureCore.getItemDamage()) {
+		if(cloneStack.getCount() < pureCore.getMaxDamage() - pureCore.getItemDamage()) {
 			try {
 				Container c = (Container) ReflectionHelper.findField(InventoryCrafting.class, "eventHandler").get(grid);
 				
 				if(c instanceof ContainerPlayer) {
-					pureCore.damageItem(otherStack.getCount(), (EntityPlayer) ReflectionHelper.findField(ContainerPlayer.class, "player").get(c));
+					pureCore.damageItem(cloneStack.getCount(), (EntityPlayer) ReflectionHelper.findField(ContainerPlayer.class, "player").get(c));
 				} else {
-					pureCore.damageItem(otherStack.getCount(), (EntityPlayer) ReflectionHelper.findField(SlotCrafting.class, "player").get(c.getSlot(0)));
+					pureCore.damageItem(cloneStack.getCount(), (EntityPlayer) ReflectionHelper.findField(SlotCrafting.class, "player").get(c.getSlot(0)));
 				}
 			} catch(IllegalAccessException e) {} //Never throws anything
 			
@@ -131,13 +133,13 @@ public class ItemDupeRecipe implements IRecipe {
 			out.add(pureCore);
 			
 			return out;
-		} else if(otherStack.getCount() == pureCore.getItemDamage()) {
+		} else if(cloneStack.getCount() == pureCore.getMaxDamage() - pureCore.getItemDamage()) {
 			return NonNullList.create();
 		} else {
-			otherStack.setCount(otherStack.getCount() - pureCore.getItemDamage());
+			cloneStack.setCount(cloneStack.getCount() - (pureCore.getMaxDamage() - pureCore.getItemDamage()));
 			
 			NonNullList<ItemStack> out = NonNullList.create();
-			out.add(otherStack);
+			out.add(cloneStack);
 			
 			return out;
 		}

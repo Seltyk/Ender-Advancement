@@ -1,6 +1,5 @@
 package wundr.endadvance;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantment.Rarity;
@@ -17,7 +16,6 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.Mod;
@@ -36,9 +34,6 @@ import wundr.endadvance.item.EnderItemStick;
 import wundr.endadvance.item.tool.*;
 import wundr.endadvance.recipes.ItemDupeRecipe;
 
-//import net.minecraftforge.fml.common.SidedProxy;
-//import wundr.endadvance.proxy.IProxy;
-
 /**
  * Copyright (c) 2016-2017 wundrweapon<br>
  * Credits to happygill16 for making the foundations for this file
@@ -48,9 +43,6 @@ import wundr.endadvance.recipes.ItemDupeRecipe;
 @SuppressWarnings("unused")
 public class EnderAdvancement {
 	public static final String MOD_ID = "endadvance";
-	
-//	@SidedProxy(clientSide = "wundr.endadvance.proxy.ClientProxy")
-//	public static IProxy proxy;
 	
 	public static boolean canTeleportDangerously;
 	public static boolean canTeleportToAir;
@@ -112,8 +104,8 @@ public class EnderAdvancement {
 	
 	private static void setRecipes() {
 		
-		//Biopneumatic End-Based Phasing Device from Ender Pearl and Ender Infused Twig x2
-		GameRegistry.addShapedRecipe(new ResourceLocation(MOD_ID + ":bebrd_recipe"), RECIPE_GROUP, new ItemStack(BEBRD), "E  ", "T  ", "T  ", 'E', Items.ENDER_EYE, 'T', ENDER_TWIG);
+		//Biopneumatic End-Based Phasing Device from Eye of Ender and Ender Infused Twig x2
+		GameRegistry.addShapedRecipe(new ResourceLocation(MOD_ID + ":bebrd_recipe"), RECIPE_GROUP, new ItemStack(BEBRD), "E", "T", "T", 'E', Items.ENDER_EYE, 'T', ENDER_TWIG);
 		
 		//Impure Ender Core from Ender Essence x4, Ender Pearl x4, and Ender Eye
 		GameRegistry.addShapedRecipe(new ResourceLocation(MOD_ID + ":impure_core_recipe"), RECIPE_GROUP, new ItemStack(IMPURE_CORE), "EPE", "PYP", "EPE", 'E', ENDER_ESSENCE, 'P', Items.ENDER_PEARL, 'Y', Items.ENDER_EYE);
@@ -134,10 +126,10 @@ public class EnderAdvancement {
 		GameRegistry.addShapedRecipe(new ResourceLocation(MOD_ID + ":axe_recipe"), RECIPE_GROUP, new ItemStack(AXE_ENDER), "EE ", "ET ", " T ", 'E', Items.ENDER_EYE, 'T', ENDER_TWIG);
 		
 		//Ender Sword from Ender Eye x2 and Ender Infused Twig
-		GameRegistry.addShapedRecipe(new ResourceLocation(MOD_ID + ":sword_recipe"), RECIPE_GROUP, new ItemStack(SWORD_ENDER), "E  ", "E  ", "T  ", 'E', Items.ENDER_EYE, 'T', ENDER_TWIG);
+		GameRegistry.addShapedRecipe(new ResourceLocation(MOD_ID + ":sword_recipe"), RECIPE_GROUP, new ItemStack(SWORD_ENDER), "E", "E", "T", 'E', Items.ENDER_EYE, 'T', ENDER_TWIG);
 		
 		//Ender Shovel from Ender Eye and Ender Infused Twig x2
-		GameRegistry.addShapedRecipe(new ResourceLocation(MOD_ID + ":shovel_recipe"), RECIPE_GROUP, new ItemStack(SHOVEL_ENDER),  "E  ", "T  ", "T  ", 'E', Items.ENDER_EYE, 'T', ENDER_TWIG);
+		GameRegistry.addShapedRecipe(new ResourceLocation(MOD_ID + ":shovel_recipe"), RECIPE_GROUP, new ItemStack(SHOVEL_ENDER),  "P", "T", "T", 'P', Items.ENDER_PEARL, 'T', ENDER_TWIG);
 	}
 	
 	private static void setTabs() {
