@@ -89,7 +89,7 @@ public class ItemDupeRecipe implements IRecipe {
 			}
 		}
 		
-		outStack.setCount(outStack.getCount() * 2 <= pureCore.getCount() ? outStack.getCount() * 2 : (pureCore.getMaxDamage() - pureCore.getItemDamage()) * 2);
+		outStack.setCount(outStack.getCount() * 2 <= (pureCore.getMaxDamage() - pureCore.getItemDamage()) ? outStack.getCount() * 2 : (pureCore.getMaxDamage() - pureCore.getItemDamage()) * 2);
 		return outStack;
 	}
 	
