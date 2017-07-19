@@ -13,6 +13,7 @@ import wundr.modutils.Booleans;
 import java.util.ArrayList;
 
 /**
+ * This class handles doubling experience and drops from certain mined things<br>
  * Copyright (c) 2016-2017 wundrweapon<br>
  * Credits to happygill16 for making the original version of this file
  * @author wundrweapon
@@ -21,6 +22,10 @@ import java.util.ArrayList;
 @SuppressWarnings("unused")
 public class HarvestDropsEventHandler {
 	
+	/**
+	 * Doubles the experience dropped when mining with <i>Duper</i>
+	 * @param event the {@link BreakEvent} being handled
+	 */
 	@SubscribeEvent
 	public static void onBreak(BreakEvent event) {
 		try {
@@ -29,7 +34,11 @@ public class HarvestDropsEventHandler {
 			}
 		} catch(NullPointerException e) {}
 	}
-
+	
+	/**
+	 * Doubles the drops when mining with <i>Duper</i>
+	 * @param event the {@link HarvestDropsEvent} being handled
+	 */
 	@SubscribeEvent
 	public static void onHarvestDrops(HarvestDropsEvent event) {
 		try {
@@ -37,6 +46,8 @@ public class HarvestDropsEventHandler {
 				ArrayList<ItemStack> dropsCopy = new ArrayList<>(event.getDrops()); //Copies the drops list to a new ArrayList
 				
 				for(ItemStack drop : dropsCopy) {
+					
+					//This statement returns true if and only if the drop does not represent any sort of block
 					if(!(drop.getItem() instanceof ItemBlock || drop.getItem() instanceof ItemBlockSpecial)) {
 						event.getDrops().add(drop.copy());
 					}

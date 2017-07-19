@@ -12,6 +12,7 @@ import wundr.endadvance.item.EnderItemEssence;
 import java.util.ArrayList;
 
 /**
+ * Makes portal particles when a non-Enderman entity holds {@link EnderItemEssence} - 2 particles for every piece of Essence<br>
  * Copyright (c) 2016-2017 wundrweapon<br>
  * Credits to Mojang, as the spawnParticle parameters used are from their code
  * @author wundrweapon
@@ -21,9 +22,13 @@ import java.util.ArrayList;
 @SuppressWarnings("unused")
 public class LivingUpdateEventHandler {
 	
+	/**
+	 * This is what actually does the whole "put down some portal particles" thing
+	 * @param event the {@link LivingUpdateEvent} being handled
+	 */
 	@SubscribeEvent
 	public static void onLivingUpdate(LivingUpdateEvent event) {
-		if(!(event.getEntity() instanceof EntityEnderman)) {
+		if(event.getEntity().world.isRemote && !(event.getEntity() instanceof EntityEnderman)) {
 			try {
 				for(ItemStack stack : event.getEntity().getHeldEquipment()) {
 					if(stack.getItem() instanceof EnderItemEssence) {

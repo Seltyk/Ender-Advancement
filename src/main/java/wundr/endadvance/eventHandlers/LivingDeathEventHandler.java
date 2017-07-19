@@ -1,7 +1,5 @@
 package wundr.endadvance.eventHandlers;
 
-import java.util.Random;
-
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.item.ItemStack;
@@ -11,6 +9,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import wundr.endadvance.EnderAdvancement;
 
 /**
+ * Drops {@link wundr.endadvance.item.EnderItemEssence} when necessary (assuming RNG)<br>
  * Copyright (c) 2016-2017 wundrweapon<br>
  * Credits to happygill16 for making the foundations for this file
  * @author wundrweapon
@@ -19,17 +18,17 @@ import wundr.endadvance.EnderAdvancement;
 @SuppressWarnings("unused")
 public class LivingDeathEventHandler {
 	
+	/**
+	 * Drops 0-2 {@link wundr.endadvance.item.EnderItemEssence} on the death of a vanilla Enderman
+	 * @param event the {@link LivingDeathEvent} being handled
+	 */
 	@SubscribeEvent
 	public static void onLivingDeath(LivingDeathEvent event) {
-		if(event.getEntity().getClass() == EntityEnderman.class) {
-			Random rand = new Random(event.getEntity().world.getSeed());
-			
-			if(rand.nextInt(EnderAdvancement.singleChance) == EnderAdvancement.singleChance - 1) {
-				if(rand.nextInt(EnderAdvancement.doubleChance) == EnderAdvancement.doubleChance - 1) {
-					event.getEntity().world.spawnEntity(new EntityItem(event.getEntity().world, event.getEntity().posX, event.getEntity().posY + .1, event.getEntity().posZ, new ItemStack(EnderAdvancement.ENDER_ESSENCE, 2))); //Using world is the same as using getEntityWorld()
-				} else {
-					event.getEntity().world.spawnEntity(new EntityItem(event.getEntity().world, event.getEntity().posX, event.getEntity().posY + .1, event.getEntity().posZ, new ItemStack(EnderAdvancement.ENDER_ESSENCE, 1))); //Using world is the same as using getEntityWorld()
-				}
+		if(event.getEntity().getClass() == EntityEnderman.class && event.getEntity().world.rand.nextInt(EnderAdvancement.singleChance) == EnderAdvancement.singleChance - 1) {
+			if(event.getEntity().world.rand.nextInt(EnderAdvancement.doubleChance) == EnderAdvancement.doubleChance - 1) {
+				event.getEntity().world.spawnEntity(new EntityItem(event.getEntity().world, event.getEntity().posX, event.getEntity().posY + .1, event.getEntity().posZ, new ItemStack(EnderAdvancement.ENDER_ESSENCE, 2))); //Using world is the same as using getEntityWorld()
+			} else {
+				event.getEntity().world.spawnEntity(new EntityItem(event.getEntity().world, event.getEntity().posX, event.getEntity().posY + .1, event.getEntity().posZ, new ItemStack(EnderAdvancement.ENDER_ESSENCE, 1))); //Using world is the same as using getEntityWorld()
 			}
 		}
 	}

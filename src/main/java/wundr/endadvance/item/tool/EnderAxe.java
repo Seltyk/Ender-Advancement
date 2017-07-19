@@ -5,16 +5,20 @@ import net.minecraft.util.ResourceLocation;
 import wundr.endadvance.EnderAdvancement;
 
 /**
+ * The Ender Axe<br>
  * Copyright (c) 2016-2017 wundrweapon<br>
  * Credits to happygill16 for making the foundations for this file
  * @author wundrweapon
  */
 public class EnderAxe extends ItemAxe {
-	private final String name = "axe";
+	private static final String NAME = "axe";
 	
-	public EnderAxe(ToolMaterial material) {
-		super(material, 12, -2.8f);
-		setRegistryName(new ResourceLocation(EnderAdvancement.MOD_ID + ":" + name));
-		setUnlocalizedName(EnderAdvancement.MOD_ID + "_" + name);
+	/**
+	 * Ender Axe constructor
+	 */
+	public EnderAxe() {
+		super(EnderAdvancement.ENDERIUM, 12, -2.8f);
+		setRegistryName(new ResourceLocation(EnderAdvancement.MOD_ID + ":" + NAME));
+		setUnlocalizedName(EnderAdvancement.MOD_ID + "_" + NAME);
 	}
 }

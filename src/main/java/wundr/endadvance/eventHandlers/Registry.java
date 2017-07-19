@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import wundr.endadvance.EnderAdvancement;
 
 /**
+ * Takes care of all the registry work - no thought required. Timing is automated, too<br>
  * Copyright (c) 2016-2017 wundrweapon
  * @author wundrweapon
  */
@@ -21,19 +22,31 @@ import wundr.endadvance.EnderAdvancement;
 public class Registry {
 	
 	//
-	//IForgeRegistry events
+	//RegistryEvent.Register events
 	//
 	
+	/**
+	 * Registers Duper so I don't have to
+	 * @param reg the {@link Register} event being handled, specifically for {@link Enchantment}s
+	 */
 	@SubscribeEvent
 	public static void registerEnchantment(Register<Enchantment> reg) {
 		reg.getRegistry().register(EnderAdvancement.DUPER);
 	}
 	
+	/**
+	 * Registers my items so I don't have to
+	 * @param reg the {@link Register} event being handled, specifically for {@link Item}s
+	 */
 	@SubscribeEvent
 	public static void registerItems(Register<Item> reg) {
 		reg.getRegistry().registerAll(EnderAdvancement.ITEMS);
 	}
 	
+	/**
+	 * Registers the duplication recipe so I don't have to
+	 * @param reg the {@link Register} event being handled, specifically for {@link IRecipe}s
+	 */
 	@SubscribeEvent
 	public static void registerRecipe(Register<IRecipe> reg) {
 		reg.getRegistry().register(EnderAdvancement.DUPLICATOR);
@@ -43,6 +56,10 @@ public class Registry {
 	//ModelRegistryEvent
 	//
 	
+	/**
+	 * Registers {@link ModelResourceLocation}s so I don't have to. This way, textures and the like actually work
+	 * @param reg the {@link ModelRegistryEvent} event being handled, which lets me set custom MRLs when Forge is ready for them
+	 */
 	@SubscribeEvent
 	public static void registerModels(ModelRegistryEvent reg) {
 		for(Item i : EnderAdvancement.ITEMS) {

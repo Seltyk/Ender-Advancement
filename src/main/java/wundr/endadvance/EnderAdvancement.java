@@ -35,11 +35,12 @@ import wundr.endadvance.item.tool.*;
 import wundr.endadvance.recipes.ItemDupeRecipe;
 
 /**
+ * The Ender Advancement mod's main class. Some constants are defined here, the config is dealt with, et cetera<br>
  * Copyright (c) 2016-2017 wundrweapon<br>
  * Credits to happygill16 for making the foundations for this file
  * @author wundrweapon
  */
-@Mod(modid = EnderAdvancement.MOD_ID, useMetadata = true)
+@Mod(modid = EnderAdvancement.MOD_ID, dependencies = "required-after:wundrmodutils@[1.12-2.0.0.0]", useMetadata = true)
 @SuppressWarnings("unused")
 public class EnderAdvancement {
 	public static final String MOD_ID = "endadvance";
@@ -59,10 +60,10 @@ public class EnderAdvancement {
 	public static final Item HEATED_CORE = new EnderItemHeatedCore();
 	public static final Item IMPURE_CORE = new EnderItemImpureCore();
 	public static final Item PURE_CORE = new EnderItemPureCore();
-	public static final ItemAxe AXE_ENDER = new EnderAxe(ENDERIUM);
-	public static final ItemPickaxe PICKAXE_ENDER = new EnderPickaxe(ENDERIUM);
-	public static final ItemSpade SHOVEL_ENDER = new EnderShovel(ENDERIUM);
-	public static final ItemSword SWORD_ENDER = new EnderSword(ENDERIUM);
+	public static final ItemAxe AXE_ENDER = new EnderAxe();
+	public static final ItemPickaxe PICKAXE_ENDER = new EnderPickaxe();
+	public static final ItemSpade SHOVEL_ENDER = new EnderShovel();
+	public static final ItemSword SWORD_ENDER = new EnderSword();
 	
 	//Recipes
 	public static final ResourceLocation RECIPE_GROUP = new ResourceLocation(MOD_ID + ":recipes");
@@ -72,20 +73,33 @@ public class EnderAdvancement {
 	public static final Enchantment DUPER = new DuperEnchantment(Rarity.VERY_RARE, EnumEnchantmentType.DIGGER, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
 	
 	//Conveniences
+//	public static final Enchantment[] ENCHANTMENTS = {DUPER};
 	public static final Item[] ITEMS = {BEBRD, ENDER_ESSENCE, ENDER_TWIG, HEATED_CORE, IMPURE_CORE, PURE_CORE, AXE_ENDER, PICKAXE_ENDER, SHOVEL_ENDER, SWORD_ENDER};
 //	public static final IRecipe[] RECIPES = {DUPLICATOR};
-  
+	
+	/**
+	 * Called in the pre-initialization phase. Deals with config
+	 * @param event the pre-init event
+	 */
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		setConfig(event);
 	}
 	
+	/**
+	 * Called in the initialization phase. Assigns recipes and adds items to creative tabs
+	 * @param event the init event
+	 */
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		setRecipes();
 		setTabs();
 	}
 	
+	/**
+	 * Sets or reads the config file
+	 * @param event pre-init event
+	 */
 	private static void setConfig(FMLPreInitializationEvent event) {
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		
@@ -102,6 +116,9 @@ public class EnderAdvancement {
 		config.save();
 	}
 	
+	/**
+	 * Assigns most of the mod's recipes the the game
+	 */
 	private static void setRecipes() {
 		
 		//Biopneumatic End-Based Phasing Device from Eye of Ender and Ender Infused Twig x2
@@ -132,6 +149,9 @@ public class EnderAdvancement {
 		GameRegistry.addShapedRecipe(new ResourceLocation(MOD_ID + ":shovel_recipe"), RECIPE_GROUP, new ItemStack(SHOVEL_ENDER),  "P", "T", "T", 'P', Items.ENDER_PEARL, 'T', ENDER_TWIG);
 	}
 	
+	/**
+	 * Create two creative tabs and add items to them
+	 */
 	private static void setTabs() {
 		CreativeTabs endAdvance = new CreativeTabs("endAdvance") {
 			
