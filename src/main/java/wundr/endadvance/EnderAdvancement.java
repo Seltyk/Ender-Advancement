@@ -25,6 +25,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.registries.IForgeRegistryEntry.Impl;
 import wundr.endadvance.enchantments.DuperEnchantment;
 import wundr.endadvance.item.EnderItemEssence;
 import wundr.endadvance.item.EnderItemHeatedCore;
@@ -67,15 +68,13 @@ public class EnderAdvancement {
 	
 	//Recipes
 	public static final ResourceLocation RECIPE_GROUP = new ResourceLocation(MOD_ID + ":recipes");
-	public static final IRecipe DUPLICATOR = new ItemDupeRecipe(new ResourceLocation(EnderAdvancement.MOD_ID + ":duplicator_recipe"));
+	public static final Impl<IRecipe> DUPLICATOR = new ItemDupeRecipe(new ResourceLocation(EnderAdvancement.MOD_ID + ":duplicator_recipe"));
 	
 	//Enchantments
 	public static final Enchantment DUPER = new DuperEnchantment(Rarity.VERY_RARE, EnumEnchantmentType.DIGGER, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
 	
 	//Conveniences
-//	public static final Enchantment[] ENCHANTMENTS = {DUPER};
-	public static final Item[] ITEMS = {BEBRD, ENDER_ESSENCE, ENDER_TWIG, HEATED_CORE, IMPURE_CORE, PURE_CORE, AXE_ENDER, PICKAXE_ENDER, SHOVEL_ENDER, SWORD_ENDER};
-//	public static final IRecipe[] RECIPES = {DUPLICATOR};
+	public static final Impl[] REGISTRY_ENTRIES = {BEBRD, DUPER, DUPLICATOR, ENDER_ESSENCE, ENDER_TWIG, HEATED_CORE, IMPURE_CORE, PURE_CORE, AXE_ENDER, PICKAXE_ENDER, SHOVEL_ENDER, SWORD_ENDER};
 	
 	/**
 	 * Called in the pre-initialization phase. Deals with config

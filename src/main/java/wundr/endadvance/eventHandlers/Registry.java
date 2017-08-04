@@ -1,15 +1,14 @@
 package wundr.endadvance.eventHandlers;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.RecipesBanners;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.registries.IForgeRegistryEntry.Impl;
 import wundr.endadvance.EnderAdvancement;
 
 /**
@@ -20,41 +19,15 @@ import wundr.endadvance.EnderAdvancement;
 @EventBusSubscriber(modid = EnderAdvancement.MOD_ID)
 @SuppressWarnings("unused")
 public class Registry {
-	
-	//
-	//RegistryEvent.Register events
-	//
-	
-	/**
-	 * Registers Duper so I don't have to
-	 * @param reg the {@link Register} event being handled, specifically for {@link Enchantment}s
-	 */
-	@SubscribeEvent
-	public static void registerEnchantment(Register<Enchantment> reg) {
-		reg.getRegistry().register(EnderAdvancement.DUPER);
-	}
-	
-	/**
-	 * Registers my items so I don't have to
-	 * @param reg the {@link Register} event being handled, specifically for {@link Item}s
-	 */
-	@SubscribeEvent
-	public static void registerItems(Register<Item> reg) {
-		reg.getRegistry().registerAll(EnderAdvancement.ITEMS);
-	}
-	
 	/**
 	 * Registers the duplication recipe so I don't have to
 	 * @param reg the {@link Register} event being handled, specifically for {@link IRecipe}s
 	 */
+	@SuppressWarnings("unchecked")
 	@SubscribeEvent
-	public static void registerRecipe(Register<IRecipe> reg) {
-		reg.getRegistry().register(EnderAdvancement.DUPLICATOR);
+	public static void register(Register reg) {
+		reg.getRegistry().registerAll(EnderAdvancement.REGISTRY_ENTRIES);
 	}
-	
-	//
-	//ModelRegistryEvent
-	//
 	
 	/**
 	 * Registers {@link ModelResourceLocation}s so I don't have to. This way, textures and the like actually work
@@ -62,8 +35,10 @@ public class Registry {
 	 */
 	@SubscribeEvent
 	public static void registerModels(ModelRegistryEvent reg) {
-		for(Item i : EnderAdvancement.ITEMS) {
-			ModelLoader.setCustomModelResourceLocation(i, 0, new ModelResourceLocation(i.getRegistryName().toString()));
+		for(Impl delegate : EnderAdvancement.REGISTRY_ENTRIES) {
+			if(delegate instanceof Item) {
+				ModelLoader.setCustomModelResourceLocation((Item) delegate, 0, new ModelResourceLocation(delegate.getRegistryName().toString()));
+			}
 		}
 	}
 }
