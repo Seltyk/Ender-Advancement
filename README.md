@@ -1,4 +1,5 @@
 # Ender Advancement
+### Despite this being the master branch, consider it the 1.10.2 branch. I started this project with little understanding if how git works, so future projects won't do this.
 The Ender Advancement mod for Minecraft 1.10.2
 
 ---
