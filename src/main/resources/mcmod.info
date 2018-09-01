@@ -2,13 +2,15 @@
 {
   "modid": "endadvance",
   "name": "Ender Advancement",
-  "description": "The power of the Enderman has increased ten fold! Just what will you do with it?",
-  "version": "2.0.0.2",
-  "mcversion": "1.12",
+  "description": "The Enderman's power is now in your hands! Just what 
+will you do with it?",
+  "version": "2.0.0.3",
+  "mcversion": "1.12.2",
   "url": "",
   "updateUrl": "",
   "authorList": ["wundrweapon"],
-  "credits": "happygill16 for making the foundation of the mod; Corcustos, ccc3593, and Ruthless_bug for textures",
+  "credits": "happygill16 for making the foundation of the mod; 
+Corcustos, ccc3593, and Ruthless_bug for textures",
   "logoFile": "",
   "screenshots": [],
   "useDependencyInformation": true,
